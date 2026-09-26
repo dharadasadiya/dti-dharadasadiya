@@ -1,13 +1,12 @@
-
 // =====================================================
 // SMARTLAPTOP - JAVASCRIPT
 // Personalized Laptop Recommendation System
 // =====================================================
 
 
-// ===============================
+// =====================================================
 // LAPTOP DATA
-// ===============================
+// =====================================================
 
 const products = [
 
@@ -22,7 +21,7 @@ const products = [
         gpu: "Integrated Graphics",
         display: "14-inch Full HD",
         battery: "Up to 8 hours",
-        image: "💻",
+        image: "images/student.jpg",
         description: "A simple and affordable laptop suitable for students, online classes and everyday study."
     },
 
@@ -37,7 +36,7 @@ const products = [
         gpu: "Integrated Graphics",
         display: "14-inch Full HD",
         battery: "Up to 9 hours",
-        image: "💻",
+        image: "images/everyday.jpg",
         description: "A balanced laptop for study, browsing, presentations and everyday tasks."
     },
 
@@ -52,7 +51,7 @@ const products = [
         gpu: "Integrated Graphics",
         display: "15.6-inch Full HD",
         battery: "Up to 8 hours",
-        image: "💻",
+        image: "images/codepro.jpg",
         description: "Designed for programming, web development, coding projects and college work."
     },
 
@@ -67,7 +66,7 @@ const products = [
         gpu: "Integrated Graphics",
         display: "16-inch Full HD",
         battery: "Up to 9 hours",
-        image: "💻",
+        image: "images/ultracode.jpg",
         description: "A powerful option for advanced programming, development and multitasking."
     },
 
@@ -82,7 +81,7 @@ const products = [
         gpu: "Dedicated Graphics",
         display: "15.6-inch 144Hz",
         battery: "Up to 6 hours",
-        image: "🎮",
+        image: "images/gamemax.jpg",
         description: "Gaming-focused laptop suitable for gaming and performance-intensive tasks."
     },
 
@@ -97,7 +96,7 @@ const products = [
         gpu: "Dedicated Graphics",
         display: "15.6-inch 144Hz",
         battery: "Up to 6 hours",
-        image: "🎮",
+        image: "images/gamecore.jpg",
         description: "High-performance laptop for gaming, development and demanding applications."
     },
 
@@ -112,7 +111,7 @@ const products = [
         gpu: "Dedicated Graphics",
         display: "16-inch Full HD",
         battery: "Up to 7 hours",
-        image: "🎨",
+        image: "images/designpro.jpg",
         description: "Suitable for graphic design, photo editing and creative projects."
     },
 
@@ -127,27 +126,30 @@ const products = [
         gpu: "Dedicated Graphics",
         display: "15.6-inch Full HD",
         battery: "Up to 7 hours",
-        image: "🎨",
+        image: "images/creator.jpg",
         description: "Powerful laptop for advanced creative work and professional applications."
     }
 
 ];
 
 
-// ===============================
+// =====================================================
 // CART / WISHLIST / COMPARE
-// ===============================
+// =====================================================
 
-let cart = JSON.parse(localStorage.getItem("smartLaptopCart")) || [];
+let cart =
+    JSON.parse(localStorage.getItem("smartLaptopCart")) || [];
 
-let wishlist = JSON.parse(localStorage.getItem("smartLaptopWishlist")) || [];
+let wishlist =
+    JSON.parse(localStorage.getItem("smartLaptopWishlist")) || [];
 
-let compareList = JSON.parse(localStorage.getItem("smartLaptopCompare")) || [];
+let compareList =
+    JSON.parse(localStorage.getItem("smartLaptopCompare")) || [];
 
 
-// ===============================
+// =====================================================
 // PRICE FORMAT
-// ===============================
+// =====================================================
 
 function formatPrice(price) {
 
@@ -156,9 +158,9 @@ function formatPrice(price) {
 }
 
 
-// ===============================
+// =====================================================
 // SAVE DATA
-// ===============================
+// =====================================================
 
 function saveData() {
 
@@ -180,9 +182,9 @@ function saveData() {
 }
 
 
-// ===============================
+// =====================================================
 // SHOW PAGE
-// ===============================
+// =====================================================
 
 function showPage(pageId) {
 
@@ -195,7 +197,9 @@ function showPage(pageId) {
     });
 
 
-    const selectedPage = document.getElementById(pageId);
+    const selectedPage =
+        document.getElementById(pageId);
+
 
     if (selectedPage) {
 
@@ -203,8 +207,6 @@ function showPage(pageId) {
 
     }
 
-
-    // Render required content
 
     if (pageId === "products") {
 
@@ -239,9 +241,9 @@ function showPage(pageId) {
 }
 
 
-// ===============================
+// =====================================================
 // UPDATE COUNTS
-// ===============================
+// =====================================================
 
 function updateCounts() {
 
@@ -277,9 +279,9 @@ function updateCounts() {
 }
 
 
-// ===============================
+// =====================================================
 // PRODUCT CARD
-// ===============================
+// =====================================================
 
 function createProductCard(product) {
 
@@ -295,28 +297,50 @@ function createProductCard(product) {
         <div class="product-card">
 
             <div class="product-image">
-                ${product.image}
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='💻';"
+                >
+
             </div>
+
 
             <div class="product-info">
 
                 <span class="product-category">
+
                     ${product.category.toUpperCase()}
+
                 </span>
 
-                <h3>${product.name}</h3>
+
+                <h3>
+                    ${product.name}
+                </h3>
+
 
                 <div class="product-price">
+
                     ${formatPrice(product.price)}
+
                 </div>
+
 
                 <div class="product-specs">
 
-                    <span>⚙️ ${product.processor}</span>
+                    <span>
+                        ⚙️ ${product.processor}
+                    </span>
 
-                    <span>💾 ${product.ram}</span>
+                    <span>
+                        💾 ${product.ram}
+                    </span>
 
-                    <span>📦 ${product.storage}</span>
+                    <span>
+                        📦 ${product.storage}
+                    </span>
 
                 </div>
 
@@ -326,14 +350,18 @@ function createProductCard(product) {
                     <button
                         class="primary-btn"
                         onclick="viewDetails(${product.id})">
+
                         View Details
+
                     </button>
 
 
                     <button
                         class="secondary-btn"
                         onclick="addToCart(${product.id})">
+
                         🛒 Add Cart
+
                     </button>
 
 
@@ -341,9 +369,11 @@ function createProductCard(product) {
                         class="wishlist-btn"
                         onclick="toggleWishlist(${product.id})">
 
-                        ${isWishlisted
+                        ${
+                            isWishlisted
                             ? "❤️ Wishlisted"
-                            : "♡ Wishlist"}
+                            : "♡ Wishlist"
+                        }
 
                     </button>
 
@@ -352,9 +382,11 @@ function createProductCard(product) {
                         class="secondary-btn"
                         onclick="addToCompare(${product.id})">
 
-                        ${isCompared
+                        ${
+                            isCompared
                             ? "✓ Compared"
-                            : "⚖️ Compare"}
+                            : "⚖️ Compare"
+                        }
 
                     </button>
 
@@ -369,14 +401,15 @@ function createProductCard(product) {
 }
 
 
-// ===============================
+// =====================================================
 // RENDER PRODUCTS
-// ===============================
+// =====================================================
 
 function renderProducts() {
 
     const container =
         document.getElementById("productContainer");
+
 
     if (!container) return;
 
@@ -384,20 +417,21 @@ function renderProducts() {
     const searchInput =
         document.getElementById("searchInput");
 
+
     const categoryFilter =
         document.getElementById("categoryFilter");
 
 
     const searchText =
         searchInput
-            ? searchInput.value.toLowerCase().trim()
-            : "";
+        ? searchInput.value.toLowerCase().trim()
+        : "";
 
 
     const category =
         categoryFilter
-            ? categoryFilter.value
-            : "all";
+        ? categoryFilter.value
+        : "all";
 
 
     const filteredProducts =
@@ -405,8 +439,8 @@ function renderProducts() {
 
             const matchesSearch =
                 product.name
-                    .toLowerCase()
-                    .includes(searchText);
+                .toLowerCase()
+                .includes(searchText);
 
 
             const matchesCategory =
@@ -414,7 +448,8 @@ function renderProducts() {
                 product.category === category;
 
 
-            return matchesSearch && matchesCategory;
+            return matchesSearch &&
+                   matchesCategory;
 
         });
 
@@ -425,7 +460,9 @@ function renderProducts() {
 
             <div class="empty-state">
 
-                <h3>😕 No Laptop Found</h3>
+                <h3>
+                    😕 No Laptop Found
+                </h3>
 
                 <p>
                     Try another search or category.
@@ -442,15 +479,15 @@ function renderProducts() {
 
     container.innerHTML =
         filteredProducts
-            .map(createProductCard)
-            .join("");
+        .map(createProductCard)
+        .join("");
 
 }
 
 
-// ===============================
-// SEARCH PRODUCTS
-// ===============================
+// =====================================================
+// SEARCH
+// =====================================================
 
 function searchProducts() {
 
@@ -459,9 +496,9 @@ function searchProducts() {
 }
 
 
-// ===============================
-// FILTER PRODUCTS
-// ===============================
+// =====================================================
+// FILTER
+// =====================================================
 
 function filterProducts() {
 
@@ -470,9 +507,9 @@ function filterProducts() {
 }
 
 
-// ===============================
-// VIEW PRODUCT DETAILS
-// ===============================
+// =====================================================
+// PRODUCT DETAILS
+// =====================================================
 
 function viewDetails(id) {
 
@@ -498,13 +535,19 @@ function viewDetails(id) {
             <button
                 class="back-btn"
                 onclick="showPage('products')">
+
                 ← Back to Products
+
             </button>
 
 
             <div class="details-image">
 
-                ${product.image}
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='💻';"
+                >
 
             </div>
 
@@ -518,7 +561,9 @@ function viewDetails(id) {
                 </span>
 
 
-                <h1>${product.name}</h1>
+                <h1>
+                    ${product.name}
+                </h1>
 
 
                 <div class="product-price">
@@ -583,7 +628,7 @@ function viewDetails(id) {
                         class="wishlist-btn"
                         onclick="toggleWishlist(${product.id})">
 
-                        ❤️ Add to Wishlist
+                        ❤️ Wishlist
 
                     </button>
 
@@ -592,7 +637,7 @@ function viewDetails(id) {
                         class="secondary-btn"
                         onclick="addToCompare(${product.id})">
 
-                        ⚖️ Add to Compare
+                        ⚖️ Compare
 
                     </button>
 
@@ -610,9 +655,9 @@ function viewDetails(id) {
 }
 
 
-// ===============================
+// =====================================================
 // ADD TO CART
-// ===============================
+// =====================================================
 
 function addToCart(id) {
 
@@ -649,14 +694,15 @@ function addToCart(id) {
 }
 
 
-// ===============================
+// =====================================================
 // RENDER CART
-// ===============================
+// =====================================================
 
 function renderCart() {
 
     const container =
         document.getElementById("cartContainer");
+
 
     if (!container) return;
 
@@ -667,7 +713,9 @@ function renderCart() {
 
             <div class="empty-state">
 
-                <h3>🛒 Your Cart is Empty</h3>
+                <h3>
+                    🛒 Your Cart is Empty
+                </h3>
 
                 <p>
                     Add a laptop to your cart first.
@@ -691,7 +739,6 @@ function renderCart() {
 
 
     let total = 0;
-
 
     let html = "";
 
@@ -723,8 +770,14 @@ function renderCart() {
                 <div class="cart-product">
 
                     <div class="cart-image">
-                        ${product.image}
+
+                        <img
+                            src="${product.image}"
+                            alt="${product.name}"
+                        >
+
                     </div>
+
 
                     <div>
 
@@ -745,16 +798,22 @@ function renderCart() {
 
                     <button
                         onclick="changeQuantity(${product.id}, -1)">
+
                         −
+
                     </button>
+
 
                     <span>
                         ${item.quantity}
                     </span>
 
+
                     <button
                         onclick="changeQuantity(${product.id}, 1)">
+
                         +
+
                     </button>
 
                 </div>
@@ -825,9 +884,9 @@ function renderCart() {
 }
 
 
-// ===============================
+// =====================================================
 // CHANGE QUANTITY
-// ===============================
+// =====================================================
 
 function changeQuantity(id, change) {
 
@@ -866,9 +925,9 @@ function changeQuantity(id, change) {
 }
 
 
-// ===============================
-// REMOVE FROM CART
-// ===============================
+// =====================================================
+// REMOVE CART ITEM
+// =====================================================
 
 function removeFromCart(id) {
 
@@ -891,9 +950,9 @@ function removeFromCart(id) {
 }
 
 
-// ===============================
-// GO TO CHECKOUT
-// ===============================
+// =====================================================
+// CHECKOUT
+// =====================================================
 
 function goToCheckout() {
 
@@ -911,9 +970,9 @@ function goToCheckout() {
 }
 
 
-// ===============================
+// =====================================================
 // WISHLIST
-// ===============================
+// =====================================================
 
 function toggleWishlist(id) {
 
@@ -942,17 +1001,20 @@ function toggleWishlist(id) {
 
     renderProducts();
 
+    renderWishlist();
+
 }
 
 
-// ===============================
+// =====================================================
 // RENDER WISHLIST
-// ===============================
+// =====================================================
 
 function renderWishlist() {
 
     const container =
         document.getElementById("wishlistContainer");
+
 
     if (!container) return;
 
@@ -963,7 +1025,9 @@ function renderWishlist() {
 
             <div class="empty-state">
 
-                <h3>❤️ Wishlist is Empty</h3>
+                <h3>
+                    ❤️ Wishlist is Empty
+                </h3>
 
                 <p>
                     Add your favorite laptops here.
@@ -988,35 +1052,37 @@ function renderWishlist() {
 
     container.innerHTML =
         wishlist
-            .map(function(id) {
+        .map(function(id) {
 
-                const product =
-                    products.find(function(p) {
+            const product =
+                products.find(function(p) {
 
-                        return p.id === id;
+                    return p.id === id;
 
-                    });
+                });
 
 
-                return product
-                    ? createProductCard(product)
-                    : "";
+            return product
+                ? createProductCard(product)
+                : "";
 
-            })
-            .join("");
+        })
+        .join("");
 
 }
 
 
-// ===============================
+// =====================================================
 // ADD TO COMPARE
-// ===============================
+// =====================================================
 
 function addToCompare(id) {
 
     if (compareList.includes(id)) {
 
-        showToast("Already added to compare");
+        showToast(
+            "Already added to compare"
+        );
 
         return;
 
@@ -1040,14 +1106,18 @@ function addToCompare(id) {
 
     renderProducts();
 
-    showToast("Added to comparison ⚖️");
+    renderCompare();
+
+    showToast(
+        "Added to comparison ⚖️"
+    );
 
 }
 
 
-// ===============================
+// =====================================================
 // REMOVE FROM COMPARE
-// ===============================
+// =====================================================
 
 function removeFromCompare(id) {
 
@@ -1068,9 +1138,9 @@ function removeFromCompare(id) {
 }
 
 
-// ===============================
+// =====================================================
 // CLEAR COMPARE
-// ===============================
+// =====================================================
 
 function clearCompare() {
 
@@ -1085,14 +1155,15 @@ function clearCompare() {
 }
 
 
-// ===============================
+// =====================================================
 // RENDER COMPARE
-// ===============================
+// =====================================================
 
 function renderCompare() {
 
     const container =
         document.getElementById("compareContainer");
+
 
     if (!container) return;
 
@@ -1103,7 +1174,9 @@ function renderCompare() {
 
             <div class="empty-state">
 
-                <h3>⚖️ No Laptops to Compare</h3>
+                <h3>
+                    ⚖️ No Laptops to Compare
+                </h3>
 
                 <p>
                     Add laptops from Products section.
@@ -1135,7 +1208,7 @@ function renderCompare() {
 
             });
 
-        });
+        }).filter(Boolean);
 
 
     let table = `
@@ -1148,7 +1221,9 @@ function renderCompare() {
 
                     <tr>
 
-                        <th>Specification</th>
+                        <th>
+                            Specification
+                        </th>
 
     `;
 
@@ -1158,6 +1233,18 @@ function renderCompare() {
         table += `
 
             <th>
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    style="
+                        width:100px;
+                        height:70px;
+                        object-fit:contain;
+                    "
+                >
+
+                <br>
 
                 ${product.name}
 
@@ -1186,147 +1273,70 @@ function renderCompare() {
 
                 <tbody>
 
-                    <tr>
-
-                        <td>Price</td>
-
     `;
 
 
-    selectedProducts.forEach(function(product) {
+    const rows = [
+
+        ["Price", "price"],
+        ["Processor", "processor"],
+        ["RAM", "ram"],
+        ["Storage", "storage"],
+        ["GPU", "gpu"],
+        ["Display", "display"],
+        ["Battery", "battery"]
+
+    ];
+
+
+    rows.forEach(function(row) {
 
         table += `
-            <td>
-                ${formatPrice(product.price)}
-            </td>
+
+            <tr>
+
+                <td>
+                    <strong>${row[0]}</strong>
+                </td>
+
+        `;
+
+
+        selectedProducts.forEach(function(product) {
+
+            let value =
+                product[row[1]];
+
+
+            if (row[1] === "price") {
+
+                value =
+                    formatPrice(value);
+
+            }
+
+
+            table += `
+
+                <td>
+                    ${value}
+                </td>
+
+            `;
+
+        });
+
+
+        table += `
+
+            </tr>
+
         `;
 
     });
 
 
     table += `
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Processor</td>
-
-    `;
-
-
-    selectedProducts.forEach(function(product) {
-
-        table += `
-            <td>${product.processor}</td>
-        `;
-
-    });
-
-
-    table += `
-
-                    </tr>
-
-                    <tr>
-
-                        <td>RAM</td>
-
-    `;
-
-
-    selectedProducts.forEach(function(product) {
-
-        table += `
-            <td>${product.ram}</td>
-        `;
-
-    });
-
-
-    table += `
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Storage</td>
-
-    `;
-
-
-    selectedProducts.forEach(function(product) {
-
-        table += `
-            <td>${product.storage}</td>
-        `;
-
-    });
-
-
-    table += `
-
-                    </tr>
-
-                    <tr>
-
-                        <td>GPU</td>
-
-    `;
-
-
-    selectedProducts.forEach(function(product) {
-
-        table += `
-            <td>${product.gpu}</td>
-        `;
-
-    });
-
-
-    table += `
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Display</td>
-
-    `;
-
-
-    selectedProducts.forEach(function(product) {
-
-        table += `
-            <td>${product.display}</td>
-        `;
-
-    });
-
-
-    table += `
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Battery</td>
-
-    `;
-
-
-    selectedProducts.forEach(function(product) {
-
-        table += `
-            <td>${product.battery}</td>
-        `;
-
-    });
-
-
-    table += `
-
-                    </tr>
 
                 </tbody>
 
@@ -1354,9 +1364,9 @@ function renderCompare() {
 }
 
 
-// ===============================
+// =====================================================
 // FIND MY LAPTOP
-// ===============================
+// =====================================================
 
 function findLaptop() {
 
@@ -1375,10 +1385,10 @@ function findLaptop() {
 
 
     const recommendation =
-        document.getElementById("recommendation");
+        document.getElementById(
+            "recommendation"
+        );
 
-
-    // Validation
 
     if (!budget || !purpose || !gaming) {
 
@@ -1386,7 +1396,9 @@ function findLaptop() {
 
             <div class="empty-state">
 
-                <h3>⚠️ Please Answer All Questions</h3>
+                <h3>
+                    ⚠️ Please Answer All Questions
+                </h3>
 
                 <p>
                     Select budget, purpose and gaming preference.
@@ -1401,8 +1413,6 @@ function findLaptop() {
     }
 
 
-    // Find laptops within budget
-
     let suitable =
         products.filter(function(product) {
 
@@ -1410,8 +1420,6 @@ function findLaptop() {
 
         });
 
-
-    // Purpose filter
 
     let purposeMatches =
         suitable.filter(function(product) {
@@ -1421,16 +1429,12 @@ function findLaptop() {
         });
 
 
-    // If purpose products exist, use them
-
     if (purposeMatches.length > 0) {
 
         suitable = purposeMatches;
 
     }
 
-
-    // Gaming preference
 
     if (gaming === "yes") {
 
@@ -1451,15 +1455,15 @@ function findLaptop() {
     }
 
 
-    // If no exact match
-
     if (suitable.length === 0) {
 
         recommendation.innerHTML = `
 
             <div class="recommendation-card">
 
-                <h3>😕 No Exact Match Found</h3>
+                <h3>
+                    😕 No Exact Match Found
+                </h3>
 
                 <p>
                     We could not find a laptop matching
@@ -1483,16 +1487,12 @@ function findLaptop() {
     }
 
 
-    // Sort by price
-
     suitable.sort(function(a, b) {
 
         return a.price - b.price;
 
     });
 
-
-    // Select best suitable option
 
     const recommended =
         suitable[suitable.length - 1];
@@ -1511,7 +1511,7 @@ function findLaptop() {
     else if (purpose === "coding") {
 
         reason =
-            "This laptop provides suitable specifications for programming, development and multitasking.";
+            "This laptop is suitable for programming, development and multitasking.";
 
     }
 
@@ -1535,13 +1535,23 @@ function findLaptop() {
         <div class="recommendation-card">
 
             <span class="badge">
+
                 YOUR RECOMMENDATION
+
             </span>
 
 
             <div class="recommendation-image">
 
-                ${recommended.image}
+                <img
+                    src="${recommended.image}"
+                    alt="${recommended.name}"
+                    style="
+                        width:220px;
+                        height:150px;
+                        object-fit:contain;
+                    "
+                >
 
             </div>
 
@@ -1562,9 +1572,14 @@ function findLaptop() {
 
 
             <p>
-                <strong>Why this laptop?</strong>
-                It matches your selected budget and
-                is designed for your selected purpose.
+
+                <strong>
+                    Why this laptop?
+                </strong>
+
+                It matches your selected budget
+                and selected purpose.
+
             </p>
 
 
@@ -1635,44 +1650,44 @@ function findLaptop() {
 }
 
 
-// ===============================
+// =====================================================
 // PLACE ORDER
-// ===============================
+// =====================================================
 
 function placeOrder() {
 
     const name =
         document
-            .getElementById("customerName")
-            .value
-            .trim();
+        .getElementById("customerName")
+        .value
+        .trim();
 
 
     const mobile =
         document
-            .getElementById("customerMobile")
-            .value
-            .trim();
+        .getElementById("customerMobile")
+        .value
+        .trim();
 
 
     const address =
         document
-            .getElementById("customerAddress")
-            .value
-            .trim();
+        .getElementById("customerAddress")
+        .value
+        .trim();
 
 
     const payment =
         document
-            .getElementById("payment")
-            .value;
+        .getElementById("payment")
+        .value;
 
 
     const message =
-        document.getElementById("orderMessage");
+        document.getElementById(
+            "orderMessage"
+        );
 
-
-    // Validation
 
     if (!name || !mobile || !address) {
 
@@ -1680,7 +1695,9 @@ function placeOrder() {
 
             <div class="empty-state">
 
-                <h3>⚠️ Please Fill All Details</h3>
+                <h3>
+                    ⚠️ Please Fill All Details
+                </h3>
 
                 <p>
                     Name, mobile number and address are required.
@@ -1695,8 +1712,6 @@ function placeOrder() {
     }
 
 
-    // Mobile validation
-
     const mobilePattern =
         /^[0-9]{10}$/;
 
@@ -1707,7 +1722,9 @@ function placeOrder() {
 
             <div class="empty-state">
 
-                <h3>⚠️ Invalid Mobile Number</h3>
+                <h3>
+                    ⚠️ Invalid Mobile Number
+                </h3>
 
                 <p>
                     Please enter a valid 10-digit mobile number.
@@ -1722,16 +1739,15 @@ function placeOrder() {
     }
 
 
-    // Generate demo order ID
-
     const orderId =
         "SL" +
         Date.now()
-            .toString()
-            .slice(-6);
+        .toString()
+        .slice(-6);
 
 
-    let paymentName = "Cash on Delivery";
+    let paymentName =
+        "Cash on Delivery";
 
 
     if (payment === "upi") {
@@ -1752,26 +1768,34 @@ function placeOrder() {
 
         <div class="recommendation-card">
 
-            <h2>🎉 Order Placed Successfully!</h2>
+            <h2>
+                🎉 Order Placed Successfully!
+            </h2>
+
 
             <p>
-                Thank you, <strong>${name}</strong>.
+                Thank you,
+                <strong>${name}</strong>.
             </p>
+
 
             <p>
                 <strong>Order ID:</strong>
                 ${orderId}
             </p>
 
+
             <p>
                 <strong>Payment:</strong>
                 ${paymentName}
             </p>
 
+
             <p>
                 Your order has been recorded
                 as a demo order.
             </p>
+
 
             <button
                 class="primary-btn"
@@ -1786,8 +1810,6 @@ function placeOrder() {
     `;
 
 
-    // Empty cart
-
     cart = [];
 
 
@@ -1796,25 +1818,33 @@ function placeOrder() {
     updateCounts();
 
 
-    // Clear form
+    document.getElementById(
+        "customerName"
+    ).value = "";
 
-    document.getElementById("customerName").value = "";
 
-    document.getElementById("customerMobile").value = "";
+    document.getElementById(
+        "customerMobile"
+    ).value = "";
 
-    document.getElementById("customerAddress").value = "";
+
+    document.getElementById(
+        "customerAddress"
+    ).value = "";
 
 }
 
 
-// ===============================
+// =====================================================
 // TOAST MESSAGE
-// ===============================
+// =====================================================
 
 function showToast(message) {
 
     const oldToast =
-        document.getElementById("smartToast");
+        document.getElementById(
+            "smartToast"
+        );
 
 
     if (oldToast) {
@@ -1866,9 +1896,9 @@ function showToast(message) {
 }
 
 
-// ===============================
-// INITIALIZE WEBSITE
-// ===============================
+// =====================================================
+// INITIALIZE
+// =====================================================
 
 function initializeApp() {
 
@@ -1879,9 +1909,9 @@ function initializeApp() {
 }
 
 
-// ===============================
+// =====================================================
 // PAGE LOAD
-// ===============================
+// =====================================================
 
 document.addEventListener(
     "DOMContentLoaded",
