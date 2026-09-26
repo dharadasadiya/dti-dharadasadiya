@@ -1,1 +1,387 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartLaptop - Personalized Laptop Finder</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo" onclick="showPage('home')">
+        💻 SmartLaptop
+    </div>
+
+    <nav>
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('products')">Products</button>
+        <button onclick="showPage('finder')">Find My Laptop</button>
+        <button onclick="showPage('compare')">Compare</button>
+        <button onclick="showPage('wishlist')">
+            ❤️ Wishlist <span id="wishlistCount">0</span>
+        </button>
+        <button onclick="showPage('cart')">
+            🛒 Cart <span id="cartCount">0</span>
+        </button>
+    </nav>
+
+</header>
+
+
+<!-- ================= HOME ================= -->
+
+<section id="home" class="page active">
+
+    <div class="hero">
+
+        <div class="hero-text">
+
+            <span class="badge">SMART LAPTOP RECOMMENDER</span>
+
+            <h1>
+                Find the <span>Perfect Laptop</span>
+                for You
+            </h1>
+
+            <p>
+                Tell us your budget and purpose.
+                SmartLaptop will help you find a suitable laptop.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-btn"
+                        onclick="showPage('finder')">
+                    🔍 Find My Laptop
+                </button>
+
+                <button class="secondary-btn"
+                        onclick="showPage('products')">
+                    View Products
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="hero-laptop">
+            💻
+        </div>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature-card">
+            <div>🎯</div>
+            <h3>Personalized</h3>
+            <p>Recommendations according to your needs.</p>
+        </div>
+
+        <div class="feature-card">
+            <div>💰</div>
+            <h3>Budget Friendly</h3>
+            <p>Find laptops according to your budget.</p>
+        </div>
+
+        <div class="feature-card">
+            <div>⚡</div>
+            <h3>Easy to Use</h3>
+            <p>Simple and quick laptop selection.</p>
+        </div>
+
+        <div class="feature-card">
+            <div>📱</div>
+            <h3>Mobile Friendly</h3>
+            <p>Designed for desktop and mobile users.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section id="products" class="page">
+
+    <div class="section-title">
+
+        <span class="badge">OUR PRODUCTS</span>
+
+        <h2>Choose Your Laptop</h2>
+
+        <p>
+            Search and filter laptops according to your requirement.
+        </p>
+
+    </div>
+
+
+    <div class="search-area">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search laptop..."
+            onkeyup="searchProducts()"
+        >
+
+        <select id="categoryFilter"
+                onchange="filterProducts()">
+
+            <option value="all">All Categories</option>
+            <option value="study">Study</option>
+            <option value="coding">Coding</option>
+            <option value="gaming">Gaming</option>
+            <option value="design">Design</option>
+
+        </select>
+
+    </div>
+
+
+    <div id="productContainer"
+         class="product-grid">
+    </div>
+
+</section>
+
+
+<!-- ================= FINDER ================= -->
+
+<section id="finder" class="page">
+
+    <div class="section-title">
+
+        <span class="badge">PERSONALIZED FINDER</span>
+
+        <h2>Find My Perfect Laptop</h2>
+
+        <p>
+            Answer a few questions and get a personalized recommendation.
+        </p>
+
+    </div>
+
+
+    <div class="finder-box">
+
+        <label>1. What is your budget?</label>
+
+        <select id="budget">
+
+            <option value="">Select Budget</option>
+            <option value="40000">Under ₹40,000</option>
+            <option value="50000">Under ₹50,000</option>
+            <option value="70000">Under ₹70,000</option>
+            <option value="100000">Under ₹1,00,000</option>
+
+        </select>
+
+
+        <label>2. What is your main purpose?</label>
+
+        <select id="purpose">
+
+            <option value="">Select Purpose</option>
+            <option value="study">Study</option>
+            <option value="coding">Coding</option>
+            <option value="gaming">Gaming</option>
+            <option value="design">Design</option>
+
+        </select>
+
+
+        <label>3. Do you need gaming performance?</label>
+
+        <select id="gaming">
+
+            <option value="">Select Option</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+
+        </select>
+
+
+        <button class="primary-btn full-btn"
+                onclick="findLaptop()">
+            🎯 Get My Recommendation
+        </button>
+
+
+        <div id="recommendation"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PRODUCT DETAILS ================= -->
+
+<section id="details" class="page">
+
+    <div id="productDetails"></div>
+
+</section>
+
+
+<!-- ================= WISHLIST ================= -->
+
+<section id="wishlist" class="page">
+
+    <div class="section-title">
+
+        <span class="badge">YOUR FAVORITES</span>
+
+        <h2>❤️ My Wishlist</h2>
+
+    </div>
+
+    <div id="wishlistContainer"
+         class="product-grid">
+    </div>
+
+</section>
+
+
+<!-- ================= CART ================= -->
+
+<section id="cart" class="page">
+
+    <div class="section-title">
+
+        <span class="badge">SHOPPING CART</span>
+
+        <h2>🛒 My Cart</h2>
+
+    </div>
+
+    <div id="cartContainer"></div>
+
+</section>
+
+
+<!-- ================= CHECKOUT ================= -->
+
+<section id="checkout" class="page">
+
+    <div class="section-title">
+
+        <span class="badge">CHECKOUT</span>
+
+        <h2>Complete Your Order</h2>
+
+    </div>
+
+
+    <div class="checkout-box">
+
+        <label>Full Name</label>
+
+        <input type="text"
+               id="customerName"
+               placeholder="Enter your name">
+
+
+        <label>Mobile Number</label>
+
+        <input type="text"
+               id="customerMobile"
+               placeholder="Enter mobile number">
+
+
+        <label>Address</label>
+
+        <textarea id="customerAddress"
+                  placeholder="Enter your address"></textarea>
+
+
+        <label>Payment Method</label>
+
+        <select id="payment">
+
+            <option value="cod">
+                Cash on Delivery
+            </option>
+
+            <option value="upi">
+                UPI
+            </option>
+
+            <option value="card">
+                Debit / Credit Card
+            </option>
+
+        </select>
+
+
+        <button class="primary-btn full-btn"
+                onclick="placeOrder()">
+            ✅ Place Order
+        </button>
+
+
+        <div id="orderMessage"></div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COMPARE ================= -->
+
+<section id="compare" class="page">
+
+    <div class="section-title">
+
+        <span class="badge">COMPARE</span>
+
+        <h2>⚖️ Compare Laptops</h2>
+
+        <p>
+            Add products to comparison from the Products section.
+        </p>
+
+    </div>
+
+
+    <div id="compareContainer"></div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <h2>💻 SmartLaptop</h2>
+
+        <p>
+            Personalized Laptop Recommendation System
+        </p>
+
+        <p>
+            Design Thinking & Innovation Project
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
