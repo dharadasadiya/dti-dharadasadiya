@@ -1,372 +1,1137 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>SmartLaptop - Personalized Laptop Finder</title>
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: #111827;
+            color: white;
+            padding: 18px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        nav button {
+            background: transparent;
+            color: white;
+            border: none;
+            padding: 10px 14px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 8px;
+        }
+
+        nav button:hover {
+            background: #374151;
+        }
+
+        /* ================= PAGE ================= */
+
+        .page {
+            display: none;
+            min-height: 70vh;
+            padding: 50px 7%;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* ================= HOME ================= */
+
+        .hero {
+            min-height: 430px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            background: linear-gradient(135deg, #e0f2fe, #eef2ff);
+            padding: 70px 8%;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #2563eb;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .hero-laptop {
+            font-size: 150px;
+        }
+
+        /* ================= BUTTONS ================= */
+
+        .primary-btn,
+        .secondary-btn {
+            border: none;
+            padding: 13px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .primary-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .primary-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .secondary-btn {
+            background: white;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+        }
+
+        .secondary-btn:hover {
+            background: #eff6ff;
+        }
+
+        .full-btn {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 50px 7%;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .feature-card div {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* ================= SECTION TITLE ================= */
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        /* ================= SEARCH ================= */
+
+        .search-area {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 35px;
+            justify-content: center;
+        }
+
+        .search-area input,
+        .search-area select {
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            font-size: 15px;
+        }
+
+        .search-area input {
+            width: 350px;
+        }
+
+        /* ================= PRODUCTS ================= */
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 210px;
+            object-fit: contain;
+            background: #f8fafc;
+            padding: 15px;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            color: #2563eb;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .product-info h3 {
+            margin: 8px 0;
+        }
+
+        .product-price {
+            color: #111827;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .product-specs {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .card-buttons {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+        }
+
+        .card-buttons button {
+            border: none;
+            padding: 9px 10px;
+            border-radius: 7px;
+            cursor: pointer;
+            background: #2563eb;
+            color: white;
+        }
+
+        .wishlist-btn {
+            background: #ef4444 !important;
+        }
+
+        /* ================= FINDER ================= */
+
+        .finder-box {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+
+        .finder-box label {
+            display: block;
+            font-weight: bold;
+            margin-top: 18px;
+            margin-bottom: 8px;
+        }
+
+        .finder-box select,
+        .checkout-box input,
+        .checkout-box textarea,
+        .checkout-box select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        #recommendation {
+            margin-top: 25px;
+        }
+
+        .recommendation-card {
+            background: #eff6ff;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .recommendation-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            background: white;
+            border-radius: 10px;
+        }
+
+        /* ================= DETAILS ================= */
+
+        #productDetails {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .details-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+
+        .details-image {
+            width: 100%;
+            height: 350px;
+            object-fit: contain;
+        }
+
+        .details-info h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .details-info p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .back-btn {
+            margin-bottom: 20px;
+            background: #374151;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* ================= CART ================= */
+
+        #cartContainer {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .cart-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.07);
+        }
+
+        .cart-item img {
+            width: 130px;
+            height: 100px;
+            object-fit: contain;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quantity-controls button {
+            padding: 7px 12px;
+            border: none;
+            background: #2563eb;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .remove-btn {
+            background: #ef4444 !important;
+        }
+
+        .cart-summary {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        /* ================= CHECKOUT ================= */
+
+        .checkout-box {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+
+        .checkout-box label {
+            display: block;
+            margin-top: 18px;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        .checkout-box textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        #orderMessage {
+            margin-top: 20px;
+        }
+
+        /* ================= COMPARE ================= */
+
+        #compareContainer {
+            overflow-x: auto;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .compare-table th,
+        .compare-table td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .compare-table th {
+            background: #111827;
+            color: white;
+        }
+
+        .compare-table img {
+            width: 150px;
+            height: 120px;
+            object-fit: contain;
+        }
+
+        /* ================= EMPTY ================= */
+
+        .empty-state {
+            text-align: center;
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 35px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            color: #d1d5db;
+            margin-top: 8px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width: 1000px) {
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+        }
+
+        @media(max-width: 650px) {
+
+            .navbar {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 50px 5%;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-laptop {
+                font-size: 90px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                padding: 30px 5%;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-area {
+                flex-direction: column;
+            }
+
+            .search-area input {
+                width: 100%;
+            }
+
+            .details-card {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .page {
+                padding: 35px 5%;
+            }
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+    <!-- ================= NAVBAR ================= -->
 
-<header class="navbar">
+    <header class="navbar">
 
-    <div class="logo" onclick="showPage('home')">
-        💻 SmartLaptop
-    </div>
+        <div class="logo" onclick="showPage('home')">
+            💻 SmartLaptop
+        </div>
 
-    <nav>
-        <button onclick="showPage('home')">Home</button>
-        <button onclick="showPage('products')">Products</button>
-        <button onclick="showPage('finder')">Find My Laptop</button>
-        <button onclick="showPage('compare')">Compare</button>
-        <button onclick="showPage('wishlist')">
-            ❤️ Wishlist <span id="wishlistCount">0</span>
-        </button>
-        <button onclick="showPage('cart')">
-            🛒 Cart <span id="cartCount">0</span>
-        </button>
-    </nav>
+        <nav>
 
-</header>
+            <button onclick="showPage('home')">
+                Home
+            </button>
+
+            <button onclick="showPage('products')">
+                Products
+            </button>
+
+            <button onclick="showPage('finder')">
+                Find My Laptop
+            </button>
+
+            <button onclick="showPage('compare')">
+                Compare
+            </button>
+
+            <button onclick="showPage('wishlist')">
+                ❤️ Wishlist
+                <span id="wishlistCount">0</span>
+            </button>
+
+            <button onclick="showPage('cart')">
+                🛒 Cart
+                <span id="cartCount">0</span>
+            </button>
+
+        </nav>
+
+    </header>
 
 
-<!-- ================= HOME ================= -->
+    <!-- ================= HOME ================= -->
 
-<section id="home" class="page active">
+    <section id="home" class="page active">
 
-    <div class="hero">
+        <div class="hero">
 
-        <div class="hero-text">
+            <div class="hero-text">
 
-            <span class="badge">SMART LAPTOP RECOMMENDER</span>
+                <span class="badge">
+                    SMART LAPTOP RECOMMENDER
+                </span>
 
-            <h1>
-                Find the <span>Perfect Laptop</span>
-                for You
-            </h1>
+                <h1>
+                    Find the
+                    <span>Perfect Laptop</span>
+                    for You
+                </h1>
 
-            <p>
-                Tell us your budget and purpose.
-                SmartLaptop will help you find a suitable laptop.
-            </p>
+                <p>
+                    Tell us your budget and purpose.
+                    SmartLaptop will help you find a suitable laptop.
+                </p>
 
-            <div class="hero-buttons">
+                <div class="hero-buttons">
 
-                <button class="primary-btn"
+                    <button
+                        class="primary-btn"
                         onclick="showPage('finder')">
-                    🔍 Find My Laptop
-                </button>
 
-                <button class="secondary-btn"
+                        🔍 Find My Laptop
+
+                    </button>
+
+                    <button
+                        class="secondary-btn"
                         onclick="showPage('products')">
-                    View Products
-                </button>
+
+                        View Products
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="hero-laptop">
+                💻
+            </div>
+
+        </div>
+
+
+        <div class="features">
+
+            <div class="feature-card">
+
+                <div>🎯</div>
+
+                <h3>
+                    Personalized
+                </h3>
+
+                <p>
+                    Recommendations according to your needs.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div>💰</div>
+
+                <h3>
+                    Budget Friendly
+                </h3>
+
+                <p>
+                    Find laptops according to your budget.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div>⚡</div>
+
+                <h3>
+                    Easy to Use
+                </h3>
+
+                <p>
+                    Simple and quick laptop selection.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div>📱</div>
+
+                <h3>
+                    Mobile Friendly
+                </h3>
+
+                <p>
+                    Designed for desktop and mobile users.
+                </p>
 
             </div>
 
         </div>
 
-        <div class="hero-laptop">
-            💻
+    </section>
+
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section id="products" class="page">
+
+        <div class="section-title">
+
+            <span class="badge">
+                OUR PRODUCTS
+            </span>
+
+            <h2>
+                Choose Your Laptop
+            </h2>
+
+            <p>
+                Search and filter laptops according to your requirement.
+            </p>
+
         </div>
 
-    </div>
 
+        <div class="search-area">
 
-    <div class="features">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="🔍 Search laptop..."
+                onkeyup="searchProducts()"
+            >
 
-        <div class="feature-card">
-            <div>🎯</div>
-            <h3>Personalized</h3>
-            <p>Recommendations according to your needs.</p>
-        </div>
-
-        <div class="feature-card">
-            <div>💰</div>
-            <h3>Budget Friendly</h3>
-            <p>Find laptops according to your budget.</p>
-        </div>
-
-        <div class="feature-card">
-            <div>⚡</div>
-            <h3>Easy to Use</h3>
-            <p>Simple and quick laptop selection.</p>
-        </div>
-
-        <div class="feature-card">
-            <div>📱</div>
-            <h3>Mobile Friendly</h3>
-            <p>Designed for desktop and mobile users.</p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= PRODUCTS ================= -->
-
-<section id="products" class="page">
-
-    <div class="section-title">
-
-        <span class="badge">OUR PRODUCTS</span>
-
-        <h2>Choose Your Laptop</h2>
-
-        <p>
-            Search and filter laptops according to your requirement.
-        </p>
-
-    </div>
-
-
-    <div class="search-area">
-
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="🔍 Search laptop..."
-            onkeyup="searchProducts()"
-        >
-
-        <select id="categoryFilter"
+            <select
+                id="categoryFilter"
                 onchange="filterProducts()">
 
-            <option value="all">All Categories</option>
-            <option value="study">Study</option>
-            <option value="coding">Coding</option>
-            <option value="gaming">Gaming</option>
-            <option value="design">Design</option>
+                <option value="all">
+                    All Categories
+                </option>
 
-        </select>
+                <option value="study">
+                    Study
+                </option>
 
-    </div>
+                <option value="coding">
+                    Coding
+                </option>
 
+                <option value="gaming">
+                    Gaming
+                </option>
 
-    <div id="productContainer"
-         class="product-grid">
-    </div>
+                <option value="design">
+                    Design
+                </option>
 
-</section>
+            </select>
 
-
-<!-- ================= FINDER ================= -->
-
-<section id="finder" class="page">
-
-    <div class="section-title">
-
-        <span class="badge">PERSONALIZED FINDER</span>
-
-        <h2>Find My Perfect Laptop</h2>
-
-        <p>
-            Answer a few questions and get a personalized recommendation.
-        </p>
-
-    </div>
+        </div>
 
 
-    <div class="finder-box">
+        <div
+            id="productContainer"
+            class="product-grid">
 
-        <label>1. What is your budget?</label>
+        </div>
 
-        <select id="budget">
-
-            <option value="">Select Budget</option>
-            <option value="40000">Under ₹40,000</option>
-            <option value="50000">Under ₹50,000</option>
-            <option value="70000">Under ₹70,000</option>
-            <option value="100000">Under ₹1,00,000</option>
-
-        </select>
+    </section>
 
 
-        <label>2. What is your main purpose?</label>
+    <!-- ================= FINDER ================= -->
 
-        <select id="purpose">
+    <section id="finder" class="page">
 
-            <option value="">Select Purpose</option>
-            <option value="study">Study</option>
-            <option value="coding">Coding</option>
-            <option value="gaming">Gaming</option>
-            <option value="design">Design</option>
+        <div class="section-title">
 
-        </select>
+            <span class="badge">
+                PERSONALIZED FINDER
+            </span>
 
+            <h2>
+                Find My Perfect Laptop
+            </h2>
 
-        <label>3. Do you need gaming performance?</label>
+            <p>
+                Answer a few questions and get a personalized recommendation.
+            </p>
 
-        <select id="gaming">
-
-            <option value="">Select Option</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-
-        </select>
+        </div>
 
 
-        <button class="primary-btn full-btn"
+        <div class="finder-box">
+
+            <label>
+                1. What is your budget?
+            </label>
+
+            <select id="budget">
+
+                <option value="">
+                    Select Budget
+                </option>
+
+                <option value="40000">
+                    Under ₹40,000
+                </option>
+
+                <option value="50000">
+                    Under ₹50,000
+                </option>
+
+                <option value="70000">
+                    Under ₹70,000
+                </option>
+
+                <option value="100000">
+                    Under ₹1,00,000
+                </option>
+
+            </select>
+
+
+            <label>
+                2. What is your main purpose?
+            </label>
+
+            <select id="purpose">
+
+                <option value="">
+                    Select Purpose
+                </option>
+
+                <option value="study">
+                    Study
+                </option>
+
+                <option value="coding">
+                    Coding
+                </option>
+
+                <option value="gaming">
+                    Gaming
+                </option>
+
+                <option value="design">
+                    Design
+                </option>
+
+            </select>
+
+
+            <label>
+                3. Do you need gaming performance?
+            </label>
+
+            <select id="gaming">
+
+                <option value="">
+                    Select Option
+                </option>
+
+                <option value="yes">
+                    Yes
+                </option>
+
+                <option value="no">
+                    No
+                </option>
+
+            </select>
+
+
+            <button
+                class="primary-btn full-btn"
                 onclick="findLaptop()">
-            🎯 Get My Recommendation
-        </button>
+
+                🎯 Get My Recommendation
+
+            </button>
 
 
-        <div id="recommendation"></div>
+            <div id="recommendation"></div>
 
-    </div>
+        </div>
 
-</section>
-
-
-<!-- ================= PRODUCT DETAILS ================= -->
-
-<section id="details" class="page">
-
-    <div id="productDetails"></div>
-
-</section>
+    </section>
 
 
-<!-- ================= WISHLIST ================= -->
+    <!-- ================= DETAILS ================= -->
 
-<section id="wishlist" class="page">
+    <section id="details" class="page">
 
-    <div class="section-title">
+        <div id="productDetails"></div>
 
-        <span class="badge">YOUR FAVORITES</span>
-
-        <h2>❤️ My Wishlist</h2>
-
-    </div>
-
-    <div id="wishlistContainer"
-         class="product-grid">
-    </div>
-
-</section>
+    </section>
 
 
-<!-- ================= CART ================= -->
+    <!-- ================= WISHLIST ================= -->
 
-<section id="cart" class="page">
+    <section id="wishlist" class="page">
 
-    <div class="section-title">
+        <div class="section-title">
 
-        <span class="badge">SHOPPING CART</span>
+            <span class="badge">
+                YOUR FAVORITES
+            </span>
 
-        <h2>🛒 My Cart</h2>
+            <h2>
+                ❤️ My Wishlist
+            </h2>
 
-    </div>
-
-    <div id="cartContainer"></div>
-
-</section>
-
-
-<!-- ================= CHECKOUT ================= -->
-
-<section id="checkout" class="page">
-
-    <div class="section-title">
-
-        <span class="badge">CHECKOUT</span>
-
-        <h2>Complete Your Order</h2>
-
-    </div>
+        </div>
 
 
-    <div class="checkout-box">
+        <div
+            id="wishlistContainer"
+            class="product-grid">
 
-        <label>Full Name</label>
+        </div>
 
-        <input type="text"
-               id="customerName"
-               placeholder="Enter your name">
-
-
-        <label>Mobile Number</label>
-
-        <input type="text"
-               id="customerMobile"
-               placeholder="Enter mobile number">
+    </section>
 
 
-        <label>Address</label>
+    <!-- ================= CART ================= -->
 
-        <textarea id="customerAddress"
-                  placeholder="Enter your address"></textarea>
+    <section id="cart" class="page">
 
+        <div class="section-title">
 
-        <label>Payment Method</label>
+            <span class="badge">
+                SHOPPING CART
+            </span>
 
-        <select id="payment">
+            <h2>
+                🛒 My Cart
+            </h2>
 
-            <option value="cod">
-                Cash on Delivery
-            </option>
-
-            <option value="upi">
-                UPI
-            </option>
-
-            <option value="card">
-                Debit / Credit Card
-            </option>
-
-        </select>
+        </div>
 
 
-        <button class="primary-btn full-btn"
+        <div id="cartContainer"></div>
+
+    </section>
+
+
+    <!-- ================= CHECKOUT ================= -->
+
+    <section id="checkout" class="page">
+
+        <div class="section-title">
+
+            <span class="badge">
+                CHECKOUT
+            </span>
+
+            <h2>
+                Complete Your Order
+            </h2>
+
+        </div>
+
+
+        <div class="checkout-box">
+
+            <label>
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Enter your name"
+            >
+
+
+            <label>
+                Mobile Number
+            </label>
+
+            <input
+                type="text"
+                id="customerMobile"
+                placeholder="Enter mobile number"
+            >
+
+
+            <label>
+                Address
+            </label>
+
+            <textarea
+                id="customerAddress"
+                placeholder="Enter your address">
+            </textarea>
+
+
+            <label>
+                Payment Method
+            </label>
+
+            <select id="payment">
+
+                <option value="cod">
+                    Cash on Delivery
+                </option>
+
+                <option value="upi">
+                    UPI
+                </option>
+
+                <option value="card">
+                    Debit / Credit Card
+                </option>
+
+            </select>
+
+
+            <button
+                class="primary-btn full-btn"
                 onclick="placeOrder()">
-            ✅ Place Order
-        </button>
+
+                ✅ Place Order
+
+            </button>
 
 
-        <div id="orderMessage"></div>
+            <div id="orderMessage"></div>
 
-    </div>
+        </div>
 
-</section>
-
-
-<!-- ================= COMPARE ================= -->
-
-<section id="compare" class="page">
-
-    <div class="section-title">
-
-        <span class="badge">COMPARE</span>
-
-        <h2>⚖️ Compare Laptops</h2>
-
-        <p>
-            Add products to comparison from the Products section.
-        </p>
-
-    </div>
+    </section>
 
 
-    <div id="compareContainer"></div>
+    <!-- ================= COMPARE ================= -->
 
-</section>
+    <section id="compare" class="page">
+
+        <div class="section-title">
+
+            <span class="badge">
+                COMPARE
+            </span>
+
+            <h2>
+                ⚖️ Compare Laptops
+            </h2>
+
+            <p>
+                Add products to comparison from the Products section.
+            </p>
+
+        </div>
 
 
-<!-- ================= FOOTER ================= -->
+        <div id="compareContainer"></div>
 
-<footer>
+    </section>
 
-    <div class="footer-content">
 
-        <h2>💻 SmartLaptop</h2>
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h2>
+            💻 SmartLaptop
+        </h2>
 
         <p>
             Personalized Laptop Recommendation System
@@ -376,12 +1141,13 @@
             Design Thinking & Innovation Project
         </p>
 
-    </div>
-
-</footer>
+    </footer>
 
 
-<script src="script.js"></script>
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="script.js"></script>
 
 </body>
+
 </html>
