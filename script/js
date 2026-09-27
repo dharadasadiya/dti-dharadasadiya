@@ -1,193 +1,331 @@
-
-/* =================================
-   ECOCAMPUS JAVASCRIPT
-================================= */
-
-
-/* ===============================
-   SMOOTH SCROLL
-================================ */
-
-function scrollToSection(sectionId) {
-
-    const section = document.getElementById(sectionId);
-
-    if (section) {
-        section.scrollIntoView({
-            behavior: "smooth"
-        });
-    }
-}
+/* =====================================================
+   ECOCAMPUS - JAVASCRIPT
+   ===================================================== */
 
 
-/* ===============================
-   WASTE INFORMATION
-================================ */
+/* ================= MOBILE MENU ================= */
 
-function showWasteInfo(type) {
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
 
-    const information = {
+if (menuBtn) {
 
-        "Wet Waste":
-            "Wet waste includes food leftovers, fruit peels, vegetables and other biodegradable materials.",
+    menuBtn.addEventListener("click", () => {
 
-        "Dry Waste":
-            "Dry waste includes paper, cardboard and clean recyclable materials.",
+        navLinks.classList.toggle("open");
 
-        "Plastic Waste":
-            "Plastic waste includes bottles, containers and plastic packaging. Dispose of it in the correct recycling bin.",
+        const icon = menuBtn.querySelector("i");
 
-        "E-Waste":
-            "E-waste includes old chargers, batteries, cables and electronic devices. Never mix e-waste with regular waste."
+        if (navLinks.classList.contains("open")) {
 
-    };
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-xmark");
 
-    showToast(
-        "♻️ " + type + ": " + information[type]
-    );
-}
+        } else {
 
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
 
-/* ===============================
-   TOAST MESSAGE
-================================ */
-
-function showToast(message) {
-
-    const oldToast = document.querySelector(".toast");
-
-    if (oldToast) {
-        oldToast.remove();
-    }
-
-    const toast = document.createElement("div");
-
-    toast.className = "toast";
-
-    toast.textContent = message;
-
-    document.body.appendChild(toast);
-
-    setTimeout(() => {
-
-        toast.style.opacity = "0";
-
-        setTimeout(() => {
-            toast.remove();
-        }, 300);
-
-    }, 3500);
-}
-
-
-/* ===============================
-   REPORT FORM
-================================ */
-
-const wasteForm = document.getElementById("wasteForm");
-
-if (wasteForm) {
-
-    wasteForm.addEventListener("submit", function(event) {
-
-        event.preventDefault();
-
-        const name =
-            document.getElementById("studentName").value.trim();
-
-        const location =
-            document.getElementById("location").value;
-
-        const wasteType =
-            document.getElementById("wasteType").value;
-
-        const description =
-            document.getElementById("description").value.trim();
-
-
-        if (!name || !location || !wasteType || !description) {
-
-            showToast("⚠️ Please fill all required fields.");
-
-            return;
         }
-
-
-        showToast(
-            "✓ Thank you " +
-            name +
-            "! Your " +
-            wasteType +
-            " report from " +
-            location +
-            " has been submitted."
-        );
-
-
-        /*
-           Demo reward:
-           Student gets 5 points after
-           submitting a waste report.
-        */
-
-        addPoints(5);
-
-        wasteForm.reset();
 
     });
 
 }
 
 
-/* ===============================
-   ECO POINT SYSTEM
-================================ */
+/* Close mobile menu */
 
-let ecoPoints = 125;
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        navLinks.classList.remove("open");
+
+        const icon = menuBtn?.querySelector("i");
+
+        if (icon) {
+
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
+
+        }
+
+    });
+
+});
 
 
-function addPoints(points) {
+/* ================= DARK MODE ================= */
+
+const themeBtn = document.getElementById("themeBtn");
+
+themeBtn?.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    const icon = themeBtn.querySelector("i");
+
+    if (document.body.classList.contains("dark")) {
+
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+
+        showToast(
+            "Dark Mode",
+            "Dark theme enabled."
+        );
+
+    } else {
+
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+
+        showToast(
+            "Light Mode",
+            "Light theme enabled."
+        );
+
+    }
+
+});
+
+
+/* ================= TOAST ================= */
+
+let toastTimer;
+
+function showToast(title, message) {
+
+    const toast = document.getElementById("toast");
+
+    document.getElementById("toastTitle").textContent = title;
+
+    document.getElementById("toastMessage").textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 3500);
+
+}
+
+
+/* ================= WASTE MODAL ================= */
+
+const wasteData = {
+
+    "Wet Waste": {
+        title: "Wet Waste",
+        text: "Wet waste includes food scraps, vegetable peels, fruit waste and other biodegradable organic materials. Put it in the designated wet-waste bin."
+    },
+
+    "Dry Waste": {
+        title: "Dry Waste",
+        text: "Dry waste includes paper, cardboard, packaging materials and other clean recyclable items. Keep these materials dry before disposal."
+    },
+
+    "Plastic Waste": {
+        title: "Plastic Waste",
+        text: "Plastic bottles, containers and recyclable plastic items should be collected separately and placed in the appropriate recycling bin."
+    },
+
+    "E-Waste": {
+        title: "E-Waste",
+        text: "Electronic waste includes old chargers, batteries, phones, cables and electronic devices. Never throw e-waste into regular bins."
+    }
+
+};
+
+
+function showWaste(type) {
+
+    const data = wasteData[type];
+
+    if (!data) return;
+
+    document.getElementById("modalTitle").textContent =
+        data.title;
+
+    document.getElementById("modalText").textContent =
+        data.text;
+
+    document.getElementById("wasteModal")
+        .classList.add("show");
+
+}
+
+
+function closeWaste() {
+
+    document.getElementById("wasteModal")
+        .classList.remove("show");
+
+}
+
+
+/* Close modal by clicking outside */
+
+document.getElementById("wasteModal")
+    ?.addEventListener("click", function(event) {
+
+        if (event.target === this) {
+
+            closeWaste();
+
+        }
+
+    });
+
+
+/* ================= BIN SEARCH ================= */
+
+function searchBin() {
+
+    const input =
+        document.getElementById("binSearch");
+
+    const search =
+        input.value.toLowerCase().trim();
+
+    const items =
+        document.querySelectorAll(".bin-item");
+
+    let found = false;
+
+    items.forEach(item => {
+
+        const text =
+            item.textContent.toLowerCase();
+
+        if (!search || text.includes(search)) {
+
+            item.style.display = "flex";
+
+            found = true;
+
+        } else {
+
+            item.style.display = "none";
+
+        }
+
+    });
+
+    if (found) {
+
+        showToast(
+            "Location Found",
+            "Matching campus bins are displayed."
+        );
+
+    } else {
+
+        showToast(
+            "No Result",
+            "No matching bin location found."
+        );
+
+    }
+
+}
+
+
+/* Search with Enter */
+
+document.getElementById("binSearch")
+    ?.addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+
+            searchBin();
+
+        }
+
+    });
+
+
+/* ================= REPORT FORM ================= */
+
+const reportForm =
+    document.getElementById("reportForm");
+
+reportForm?.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const type =
+        document.getElementById("wasteType").value;
+
+    const location =
+        document.getElementById("reportLocation").value;
+
+    if (!type || !location) {
+
+        showToast(
+            "Missing Information",
+            "Please complete the required fields."
+        );
+
+        return;
+
+    }
+
+
+    /* Increase points */
+
+    addEcoPoints(50);
+
+
+    /* Show success */
+
+    showToast(
+        "Report Submitted",
+        "Thank you! You earned +50 Eco Points."
+    );
+
+
+    /* Reset form */
+
+    reportForm.reset();
+
+});
+
+
+/* ================= ECO POINTS ================= */
+
+let ecoPoints = 720;
+
+
+function addEcoPoints(points) {
 
     ecoPoints += points;
+
+    if (ecoPoints > 1000) {
+
+        ecoPoints = 1000;
+
+    }
 
     updatePoints();
 
 }
 
 
-/* ===============================
-   DEMO POINT BUTTON
-================================ */
-
-function addDemoPoints() {
-
-    addPoints(10);
-
-    showToast(
-        "🌱 Great job! You earned 10 Eco Points."
-    );
-
-}
-
-
-/* ===============================
-   UPDATE POINTS
-================================ */
-
 function updatePoints() {
 
     const pointsElement =
-        document.getElementById("pointsValue");
+        document.getElementById("ecoPoints");
 
-    const progressBar =
-        document.getElementById("progressBar");
+    const progress =
+        document.getElementById("pointsProgress");
 
-    const levelText =
-        document.getElementById("levelText");
-
-    const dharaPoints =
-        document.getElementById("dharaPoints");
-
+    const text =
+        document.getElementById("pointsText");
 
     if (pointsElement) {
 
@@ -196,89 +334,114 @@ function updatePoints() {
 
     }
 
+    if (progress) {
 
-    if (progressBar) {
-
-        let progress =
-            Math.min((ecoPoints / 200) * 100, 100);
-
-        progressBar.style.width =
-            progress + "%";
+        progress.style.width =
+            (ecoPoints / 1000 * 100) + "%";
 
     }
 
+    if (text) {
 
-    if (levelText) {
-
-        if (ecoPoints >= 200) {
-
-            levelText.textContent =
-                "Eco Champion";
-
-        }
-
-        else if (ecoPoints >= 150) {
-
-            levelText.textContent =
-                "Green Warrior";
-
-        }
-
-        else {
-
-            levelText.textContent =
-                "Green Hero";
-
-        }
-
-    }
-
-
-    if (dharaPoints) {
-
-        dharaPoints.textContent =
-            ecoPoints + " pts";
+        text.textContent =
+            ecoPoints + " / 1000 XP";
 
     }
 
 }
 
 
-/* ===============================
-   NAVBAR ACTIVE LINK
-================================ */
+/* ================= NAV ACTIVE ================= */
 
-const navLinks =
-    document.querySelectorAll(".navbar nav a");
+const sections =
+    document.querySelectorAll("section[id]");
 
+const navItems =
+    document.querySelectorAll(".nav-links a");
 
-navLinks.forEach(function(link) {
+window.addEventListener("scroll", () => {
 
-    link.addEventListener("click", function() {
+    let current = "";
 
-        navLinks.forEach(function(item) {
+    sections.forEach(section => {
 
-            item.style.color = "";
+        const sectionTop =
+            section.offsetTop - 130;
 
-        });
+        if (window.scrollY >= sectionTop) {
 
-        this.style.color = "#239447";
+            current = section.getAttribute("id");
+
+        }
+
+    });
+
+    navItems.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (
+            link.getAttribute("href") ===
+            "#" + current
+        ) {
+
+            link.classList.add("active");
+
+        }
 
     });
 
 });
 
 
-/* ===============================
-   PAGE LOAD
-================================ */
+/* ================= SCROLL ANIMATION ================= */
 
-document.addEventListener("DOMContentLoaded", function() {
+const observer =
+    new IntersectionObserver(
+        entries => {
 
-    updatePoints();
+            entries.forEach(entry => {
 
-    console.log(
-        "EcoCampus website loaded successfully."
+                if (entry.isIntersecting) {
+
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform =
+                        "translateY(0)";
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
     );
 
-});
+
+document
+    .querySelectorAll(
+        ".impact-card, .waste-card, .tip-card, .leader-row"
+    )
+    .forEach(element => {
+
+        element.style.opacity = "0";
+
+        element.style.transform =
+            "translateY(20px)";
+
+        element.style.transition =
+            "opacity .6s ease, transform .6s ease";
+
+        observer.observe(element);
+
+    });
+
+
+/* ================= INITIALIZE ================= */
+
+updatePoints();
+
+console.log(
+    "EcoCampus loaded successfully 🌱"
+);
