@@ -1,1 +1,748 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoCampus | Smart Green Campus</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <span class="logo-icon">🌿</span>
+        <span>Eco<span>Campus</span></span>
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#waste">Waste Guide</a>
+        <a href="#locator">Bin Locator</a>
+        <a href="#report">Report</a>
+        <a href="#tips">Eco Tips</a>
+        <a href="#points">Eco Points</a>
+    </nav>
+
+    <button class="nav-btn" onclick="scrollToSection('report')">
+        Report Waste
+    </button>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🌱 Smart Waste Management
+        </div>
+
+        <h1>
+            Build a
+            <span>Cleaner</span>
+            <br>
+            Greener Campus.
+        </h1>
+
+        <p>
+            EcoCampus helps students manage waste responsibly,
+            find the right bins, report campus issues and earn
+            rewards for eco-friendly actions.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button class="primary-btn"
+                    onclick="scrollToSection('waste')">
+                Explore Waste Guide →
+            </button>
+
+            <button class="secondary-btn"
+                    onclick="scrollToSection('report')">
+                Report an Issue
+            </button>
+
+        </div>
+
+        <div class="hero-trust">
+            <span>✓ Easy to use</span>
+            <span>✓ Student friendly</span>
+            <span>✓ Eco focused</span>
+        </div>
+
+    </div>
+
+
+    <div class="hero-visual">
+
+        <div class="eco-circle">
+            <div class="circle-icon">🌎</div>
+        </div>
+
+        <div class="floating-card card-one">
+            <span>♻️</span>
+            <div>
+                <strong>Waste Recycled</strong>
+                <small>+24% this month</small>
+            </div>
+        </div>
+
+        <div class="floating-card card-two">
+            <span>🌱</span>
+            <div>
+                <strong>Eco Points</strong>
+                <small>125 points earned</small>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<section class="stats">
+
+    <div class="stat-card">
+        <div class="stat-icon">👨‍🎓</div>
+        <div>
+            <h2>500+</h2>
+            <p>Students</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">♻️</div>
+        <div>
+            <h2>250+</h2>
+            <p>Reports Resolved</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🗑️</div>
+        <div>
+            <h2>35+</h2>
+            <p>Smart Bins</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🌱</div>
+        <div>
+            <h2>120+</h2>
+            <p>Eco Activities</p>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ================= WASTE GUIDE ================= -->
+
+<section class="section" id="waste">
+
+    <div class="section-heading">
+
+        <span class="section-label">WASTE GUIDE</span>
+
+        <h2>
+            Know Your Waste.
+            <span>Make a Difference.</span>
+        </h2>
+
+        <p>
+            Learn how to identify and dispose of different
+            types of waste correctly.
+        </p>
+
+    </div>
+
+
+    <div class="waste-grid">
+
+        <div class="waste-card wet">
+
+            <div class="waste-icon">🥬</div>
+
+            <span class="waste-tag">ORGANIC</span>
+
+            <h3>Wet Waste</h3>
+
+            <p>
+                Food leftovers, fruit peels and other
+                biodegradable materials.
+            </p>
+
+            <button onclick="showWasteInfo('Wet Waste')">
+                Learn More →
+            </button>
+
+        </div>
+
+
+        <div class="waste-card dry">
+
+            <div class="waste-icon">📦</div>
+
+            <span class="waste-tag">RECYCLABLE</span>
+
+            <h3>Dry Waste</h3>
+
+            <p>
+                Paper, cardboard and clean recyclable
+                packaging materials.
+            </p>
+
+            <button onclick="showWasteInfo('Dry Waste')">
+                Learn More →
+            </button>
+
+        </div>
+
+
+        <div class="waste-card plastic">
+
+            <div class="waste-icon">🥤</div>
+
+            <span class="waste-tag">PLASTIC</span>
+
+            <h3>Plastic Waste</h3>
+
+            <p>
+                Bottles, containers and other plastic
+                packaging materials.
+            </p>
+
+            <button onclick="showWasteInfo('Plastic Waste')">
+                Learn More →
+            </button>
+
+        </div>
+
+
+        <div class="waste-card electronic">
+
+            <div class="waste-icon">💻</div>
+
+            <span class="waste-tag">E-WASTE</span>
+
+            <h3>E-Waste</h3>
+
+            <p>
+                Old chargers, batteries, cables and
+                electronic components.
+            </p>
+
+            <button onclick="showWasteInfo('E-Waste')">
+                Learn More →
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BIN LOCATOR ================= -->
+
+<section class="locator-section" id="locator">
+
+    <div class="section-heading">
+
+        <span class="section-label">BIN LOCATOR</span>
+
+        <h2>
+            Find the Right
+            <span>Bin.</span>
+        </h2>
+
+        <p>
+            Locate the appropriate waste collection point
+            around your campus.
+        </p>
+
+    </div>
+
+
+    <div class="locator-container">
+
+        <div class="campus-map">
+
+            <div class="map-title">
+                <span>📍</span>
+                Campus Waste Points
+            </div>
+
+            <div class="map-area">
+
+                <div class="map-building building-a">
+                    🏫
+                    <small>Block A</small>
+                </div>
+
+                <div class="map-building building-b">
+                    📚
+                    <small>Library</small>
+                </div>
+
+                <div class="map-building building-c">
+                    🍽️
+                    <small>Canteen</small>
+                </div>
+
+                <div class="map-building building-d">
+                    💻
+                    <small>Computer Lab</small>
+                </div>
+
+                <div class="bin-point point-1">♻️</div>
+                <div class="bin-point point-2">🗑️</div>
+                <div class="bin-point point-3">♻️</div>
+                <div class="bin-point point-4">🔋</div>
+
+            </div>
+
+        </div>
+
+
+        <div class="location-list">
+
+            <div class="location-card">
+                <div class="location-icon dry-icon">♻️</div>
+                <div>
+                    <h3>Library</h3>
+                    <p>Dry Waste Bin</p>
+                </div>
+                <span>→</span>
+            </div>
+
+            <div class="location-card">
+                <div class="location-icon wet-icon">🥬</div>
+                <div>
+                    <h3>Canteen</h3>
+                    <p>Wet Waste Bin</p>
+                </div>
+                <span>→</span>
+            </div>
+
+            <div class="location-card">
+                <div class="location-icon plastic-icon">🥤</div>
+                <div>
+                    <h3>Main Block</h3>
+                    <p>Plastic Waste Bin</p>
+                </div>
+                <span>→</span>
+            </div>
+
+            <div class="location-card">
+                <div class="location-icon electronic-icon">🔋</div>
+                <div>
+                    <h3>Computer Lab</h3>
+                    <p>E-Waste Collection</p>
+                </div>
+                <span>→</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= REPORT ================= -->
+
+<section class="section" id="report">
+
+    <div class="report-container">
+
+        <div class="report-info">
+
+            <span class="section-label">REPORT AN ISSUE</span>
+
+            <h2>
+                See Something?
+                <span>Report It.</span>
+            </h2>
+
+            <p>
+                Help keep our campus clean. Report overflowing
+                bins, garbage or other waste-related issues.
+            </p>
+
+            <div class="report-features">
+
+                <div>
+                    <span>✓</span>
+                    Quick and simple reporting
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Help campus management
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Earn Eco Points
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="report-form">
+
+            <form id="wasteForm">
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label>Student Name</label>
+                        <input
+                            type="text"
+                            id="studentName"
+                            placeholder="Enter your name"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Location</label>
+
+                        <select id="location" required>
+
+                            <option value="">
+                                Select location
+                            </option>
+
+                            <option>Block A</option>
+                            <option>Block B</option>
+                            <option>Library</option>
+                            <option>Canteen</option>
+                            <option>Computer Lab</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Waste Type</label>
+
+                    <select id="wasteType" required>
+
+                        <option value="">
+                            Select waste category
+                        </option>
+
+                        <option>Wet Waste</option>
+                        <option>Dry Waste</option>
+                        <option>Plastic Waste</option>
+                        <option>E-Waste</option>
+                        <option>Other</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Description</label>
+
+                    <textarea
+                        id="description"
+                        rows="4"
+                        placeholder="Describe the problem..."
+                        required></textarea>
+
+                </div>
+
+
+                <button type="submit" class="submit-btn">
+                    Submit Report →
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ECO TIPS ================= -->
+
+<section class="section tips-section" id="tips">
+
+    <div class="section-heading">
+
+        <span class="section-label">ECO TIPS</span>
+
+        <h2>
+            Small Actions.
+            <span>Big Impact.</span>
+        </h2>
+
+        <p>
+            Simple habits can make our campus and planet healthier.
+        </p>
+
+    </div>
+
+
+    <div class="tips-grid">
+
+        <div class="tip-card">
+            <span>💧</span>
+            <h3>Use Reusable Bottles</h3>
+            <p>
+                Reduce single-use plastic by carrying
+                a reusable water bottle.
+            </p>
+        </div>
+
+        <div class="tip-card">
+            <span>💡</span>
+            <h3>Save Electricity</h3>
+            <p>
+                Switch off lights, fans and devices
+                when they are not needed.
+            </p>
+        </div>
+
+        <div class="tip-card">
+            <span>📄</span>
+            <h3>Reduce Paper Waste</h3>
+            <p>
+                Use digital notes whenever possible
+                and print only when necessary.
+            </p>
+        </div>
+
+        <div class="tip-card">
+            <span>🔋</span>
+            <h3>Recycle E-Waste</h3>
+            <p>
+                Never throw batteries and electronics
+                into regular dustbins.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ECO POINTS ================= -->
+
+<section class="points-section" id="points">
+
+    <div class="points-container">
+
+        <div class="points-content">
+
+            <span class="section-label">ECO REWARDS</span>
+
+            <h2>
+                Your Actions
+                <span>Matter.</span>
+            </h2>
+
+            <p>
+                Participate in green activities, earn Eco Points
+                and become an EcoCampus Green Hero.
+            </p>
+
+            <button class="primary-btn"
+                    onclick="addDemoPoints()">
+                Earn 10 Points
+            </button>
+
+        </div>
+
+
+        <div class="points-card">
+
+            <div class="points-top">
+                <span>🌱</span>
+                <small>MY ECO IMPACT</small>
+            </div>
+
+            <h3 id="pointsValue">125</h3>
+
+            <p>Eco Points</p>
+
+            <div class="progress">
+
+                <div class="progress-bar" id="progressBar"></div>
+
+            </div>
+
+            <div class="level">
+                <span>Current Level</span>
+                <strong id="levelText">Green Hero</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LEADERBOARD ================= -->
+
+<section class="section" id="leaderboard">
+
+    <div class="section-heading">
+
+        <span class="section-label">LEADERBOARD</span>
+
+        <h2>
+            Meet Our
+            <span>Eco Champions.</span>
+        </h2>
+
+        <p>
+            Friendly competition that encourages
+            positive environmental actions.
+        </p>
+
+    </div>
+
+
+    <div class="leaderboard">
+
+        <div class="leader-row top">
+            <div class="rank">🥇</div>
+            <div class="avatar">A</div>
+            <div class="student">
+                <strong>Aarav</strong>
+                <small>Eco Champion</small>
+            </div>
+            <strong>250 pts</strong>
+        </div>
+
+        <div class="leader-row">
+            <div class="rank">🥈</div>
+            <div class="avatar">R</div>
+            <div class="student">
+                <strong>Rahul</strong>
+                <small>Green Warrior</small>
+            </div>
+            <strong>220 pts</strong>
+        </div>
+
+        <div class="leader-row">
+            <div class="rank">🥉</div>
+            <div class="avatar">P</div>
+            <div class="student">
+                <strong>Priya</strong>
+                <small>Eco Hero</small>
+            </div>
+            <strong>195 pts</strong>
+        </div>
+
+        <div class="leader-row">
+            <div class="rank">4</div>
+            <div class="avatar">D</div>
+            <div class="student">
+                <strong>Dhara</strong>
+                <small>Green Starter</small>
+            </div>
+            <strong id="dharaPoints">180 pts</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+
+            <div class="logo">
+                <span class="logo-icon">🌿</span>
+                <span>Eco<span>Campus</span></span>
+            </div>
+
+            <p>
+                Building cleaner campuses through
+                technology, awareness and action.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Platform</h4>
+
+            <a href="#waste">Waste Guide</a>
+            <a href="#locator">Bin Locator</a>
+            <a href="#report">Report Waste</a>
+            <a href="#points">Eco Points</a>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <h4>Resources</h4>
+
+            <a href="#tips">Eco Tips</a>
+            <a href="#leaderboard">Leaderboard</a>
+            <a href="#home">About EcoCampus</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>© 2026 EcoCampus. Designed for a greener future.</p>
+
+        <span>🌱 Think Green • Act Green</span>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="script.js"></script>
+
+</body>
+</html>
