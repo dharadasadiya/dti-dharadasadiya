@@ -1,1 +1,284 @@
 
+/* =================================
+   ECOCAMPUS JAVASCRIPT
+================================= */
+
+
+/* ===============================
+   SMOOTH SCROLL
+================================ */
+
+function scrollToSection(sectionId) {
+
+    const section = document.getElementById(sectionId);
+
+    if (section) {
+        section.scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+}
+
+
+/* ===============================
+   WASTE INFORMATION
+================================ */
+
+function showWasteInfo(type) {
+
+    const information = {
+
+        "Wet Waste":
+            "Wet waste includes food leftovers, fruit peels, vegetables and other biodegradable materials.",
+
+        "Dry Waste":
+            "Dry waste includes paper, cardboard and clean recyclable materials.",
+
+        "Plastic Waste":
+            "Plastic waste includes bottles, containers and plastic packaging. Dispose of it in the correct recycling bin.",
+
+        "E-Waste":
+            "E-waste includes old chargers, batteries, cables and electronic devices. Never mix e-waste with regular waste."
+
+    };
+
+    showToast(
+        "♻️ " + type + ": " + information[type]
+    );
+}
+
+
+/* ===============================
+   TOAST MESSAGE
+================================ */
+
+function showToast(message) {
+
+    const oldToast = document.querySelector(".toast");
+
+    if (oldToast) {
+        oldToast.remove();
+    }
+
+    const toast = document.createElement("div");
+
+    toast.className = "toast";
+
+    toast.textContent = message;
+
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+
+        toast.style.opacity = "0";
+
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+
+    }, 3500);
+}
+
+
+/* ===============================
+   REPORT FORM
+================================ */
+
+const wasteForm = document.getElementById("wasteForm");
+
+if (wasteForm) {
+
+    wasteForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const name =
+            document.getElementById("studentName").value.trim();
+
+        const location =
+            document.getElementById("location").value;
+
+        const wasteType =
+            document.getElementById("wasteType").value;
+
+        const description =
+            document.getElementById("description").value.trim();
+
+
+        if (!name || !location || !wasteType || !description) {
+
+            showToast("⚠️ Please fill all required fields.");
+
+            return;
+        }
+
+
+        showToast(
+            "✓ Thank you " +
+            name +
+            "! Your " +
+            wasteType +
+            " report from " +
+            location +
+            " has been submitted."
+        );
+
+
+        /*
+           Demo reward:
+           Student gets 5 points after
+           submitting a waste report.
+        */
+
+        addPoints(5);
+
+        wasteForm.reset();
+
+    });
+
+}
+
+
+/* ===============================
+   ECO POINT SYSTEM
+================================ */
+
+let ecoPoints = 125;
+
+
+function addPoints(points) {
+
+    ecoPoints += points;
+
+    updatePoints();
+
+}
+
+
+/* ===============================
+   DEMO POINT BUTTON
+================================ */
+
+function addDemoPoints() {
+
+    addPoints(10);
+
+    showToast(
+        "🌱 Great job! You earned 10 Eco Points."
+    );
+
+}
+
+
+/* ===============================
+   UPDATE POINTS
+================================ */
+
+function updatePoints() {
+
+    const pointsElement =
+        document.getElementById("pointsValue");
+
+    const progressBar =
+        document.getElementById("progressBar");
+
+    const levelText =
+        document.getElementById("levelText");
+
+    const dharaPoints =
+        document.getElementById("dharaPoints");
+
+
+    if (pointsElement) {
+
+        pointsElement.textContent =
+            ecoPoints;
+
+    }
+
+
+    if (progressBar) {
+
+        let progress =
+            Math.min((ecoPoints / 200) * 100, 100);
+
+        progressBar.style.width =
+            progress + "%";
+
+    }
+
+
+    if (levelText) {
+
+        if (ecoPoints >= 200) {
+
+            levelText.textContent =
+                "Eco Champion";
+
+        }
+
+        else if (ecoPoints >= 150) {
+
+            levelText.textContent =
+                "Green Warrior";
+
+        }
+
+        else {
+
+            levelText.textContent =
+                "Green Hero";
+
+        }
+
+    }
+
+
+    if (dharaPoints) {
+
+        dharaPoints.textContent =
+            ecoPoints + " pts";
+
+    }
+
+}
+
+
+/* ===============================
+   NAVBAR ACTIVE LINK
+================================ */
+
+const navLinks =
+    document.querySelectorAll(".navbar nav a");
+
+
+navLinks.forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        navLinks.forEach(function(item) {
+
+            item.style.color = "";
+
+        });
+
+        this.style.color = "#239447";
+
+    });
+
+});
+
+
+/* ===============================
+   PAGE LOAD
+================================ */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    updatePoints();
+
+    console.log(
+        "EcoCampus website loaded successfully."
+    );
+
+});
