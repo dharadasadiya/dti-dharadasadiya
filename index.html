@@ -1,18 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>EcoCampus | Smart Green Campus</title>
+    <title>EcoCampus | Smart & Sustainable Campus</title>
 
-    <!-- Google Font -->
+    <meta name="description"
+          content="EcoCampus - Smart Waste Management and Green Campus Platform">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -22,23 +27,42 @@
 
 <header class="navbar">
 
-    <div class="logo">
-        <span class="logo-icon">🌿</span>
-        <span>Eco<span>Campus</span></span>
+    <div class="nav-container">
+
+        <a href="#home" class="logo">
+            <span class="logo-icon">
+                <i class="fa-solid fa-leaf"></i>
+            </span>
+
+            <span>
+                Eco<span>Campus</span>
+            </span>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+
+            <a href="#home" class="active">Home</a>
+            <a href="#impact">Impact</a>
+            <a href="#waste">Waste Guide</a>
+            <a href="#bins">Bin Locator</a>
+            <a href="#report">Report</a>
+            <a href="#leaderboard">Leaderboard</a>
+
+        </nav>
+
+        <div class="nav-actions">
+
+            <button class="theme-btn" id="themeBtn" title="Toggle theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+            <button class="menu-btn" id="menuBtn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+
     </div>
-
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#waste">Waste Guide</a>
-        <a href="#locator">Bin Locator</a>
-        <a href="#report">Report</a>
-        <a href="#tips">Eco Tips</a>
-        <a href="#points">Eco Points</a>
-    </nav>
-
-    <button class="nav-btn" onclick="scrollToSection('report')">
-        Report Waste
-    </button>
 
 </header>
 
@@ -47,68 +71,188 @@
 
 <section class="hero" id="home">
 
-    <div class="hero-content">
+    <div class="hero-container">
 
-        <div class="badge">
-            🌱 Smart Waste Management
-        </div>
+        <div class="hero-content">
 
-        <h1>
-            Build a
-            <span>Cleaner</span>
-            <br>
-            Greener Campus.
-        </h1>
-
-        <p>
-            EcoCampus helps students manage waste responsibly,
-            find the right bins, report campus issues and earn
-            rewards for eco-friendly actions.
-        </p>
-
-        <div class="hero-buttons">
-
-            <button class="primary-btn"
-                    onclick="scrollToSection('waste')">
-                Explore Waste Guide →
-            </button>
-
-            <button class="secondary-btn"
-                    onclick="scrollToSection('report')">
-                Report an Issue
-            </button>
-
-        </div>
-
-        <div class="hero-trust">
-            <span>✓ Easy to use</span>
-            <span>✓ Student friendly</span>
-            <span>✓ Eco focused</span>
-        </div>
-
-    </div>
-
-
-    <div class="hero-visual">
-
-        <div class="eco-circle">
-            <div class="circle-icon">🌎</div>
-        </div>
-
-        <div class="floating-card card-one">
-            <span>♻️</span>
-            <div>
-                <strong>Waste Recycled</strong>
-                <small>+24% this month</small>
+            <div class="eyebrow">
+                <span class="pulse"></span>
+                SMART CAMPUS • GREEN FUTURE
             </div>
+
+            <h1>
+                Make Your Campus
+                <span>Cleaner & Greener.</span>
+            </h1>
+
+            <p>
+                EcoCampus is a smart waste management platform that
+                helps students segregate waste, locate bins, report
+                problems and build a sustainable campus together.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#waste" class="btn btn-primary">
+                    Explore Waste Guide
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+                <a href="#report" class="btn btn-outline">
+                    <i class="fa-solid fa-camera"></i>
+                    Report Waste
+                </a>
+
+            </div>
+
+            <div class="hero-trust">
+
+                <div class="avatars">
+                    <span>R</span>
+                    <span>A</span>
+                    <span>S</span>
+                    <span>+</span>
+                </div>
+
+                <div>
+                    <strong>500+ Students</strong>
+                    <small>making a greener campus</small>
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="floating-card card-two">
-            <span>🌱</span>
-            <div>
-                <strong>Eco Points</strong>
-                <small>125 points earned</small>
+
+        <!-- Hero Dashboard -->
+
+        <div class="hero-dashboard">
+
+            <div class="dashboard-window">
+
+                <div class="window-top">
+
+                    <div class="window-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <span>EcoCampus Dashboard</span>
+
+                    <i class="fa-solid fa-ellipsis"></i>
+
+                </div>
+
+
+                <div class="dashboard-content">
+
+                    <div class="dashboard-heading">
+
+                        <div>
+                            <small>Campus Impact</small>
+                            <h3>September 2026</h3>
+                        </div>
+
+                        <span class="status">
+                            <i class="fa-solid fa-circle"></i>
+                            Live
+                        </span>
+
+                    </div>
+
+
+                    <div class="mini-stats">
+
+                        <div class="mini-card">
+                            <div class="mini-icon green">
+                                <i class="fa-solid fa-recycle"></i>
+                            </div>
+
+                            <div>
+                                <strong>1,248 kg</strong>
+                                <small>Waste Recycled</small>
+                            </div>
+                        </div>
+
+
+                        <div class="mini-card">
+                            <div class="mini-icon blue">
+                                <i class="fa-solid fa-bullseye"></i>
+                            </div>
+
+                            <div>
+                                <strong>86%</strong>
+                                <small>Segregation Rate</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="chart-card">
+
+                        <div class="chart-header">
+                            <span>Waste Recovery</span>
+                            <strong>+18.4%</strong>
+                        </div>
+
+                        <div class="fake-chart">
+
+                            <div class="bar" style="height:35%"></div>
+                            <div class="bar" style="height:48%"></div>
+                            <div class="bar" style="height:42%"></div>
+                            <div class="bar" style="height:65%"></div>
+                            <div class="bar" style="height:58%"></div>
+                            <div class="bar" style="height:78%"></div>
+                            <div class="bar active-bar" style="height:90%"></div>
+
+                        </div>
+
+                        <div class="chart-days">
+                            <span>Mon</span>
+                            <span>Tue</span>
+                            <span>Wed</span>
+                            <span>Thu</span>
+                            <span>Fri</span>
+                            <span>Sat</span>
+                            <span>Sun</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
+
+
+            <div class="floating-card floating-one">
+
+                <div class="float-icon">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+
+                <div>
+                    <strong>+120</strong>
+                    <small>Eco Points</small>
+                </div>
+
+            </div>
+
+
+            <div class="floating-card floating-two">
+
+                <div class="float-icon blue-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+
+                <div>
+                    <strong>3 Bins</strong>
+                    <small>Nearby</small>
+                </div>
+
+            </div>
+
         </div>
 
     </div>
@@ -116,40 +260,104 @@
 </section>
 
 
-<!-- ================= STATS ================= -->
+<!-- ================= IMPACT ================= -->
 
-<section class="stats">
+<section class="impact-section" id="impact">
 
-    <div class="stat-card">
-        <div class="stat-icon">👨‍🎓</div>
-        <div>
-            <h2>500+</h2>
-            <p>Students</p>
+    <div class="container">
+
+        <div class="section-heading center">
+
+            <span class="section-label">OUR IMPACT</span>
+
+            <h2>
+                Small actions.
+                <span>Big impact.</span>
+            </h2>
+
+            <p>
+                Every responsible action contributes to a cleaner,
+                healthier and more sustainable campus.
+            </p>
+
         </div>
-    </div>
 
-    <div class="stat-card">
-        <div class="stat-icon">♻️</div>
-        <div>
-            <h2>250+</h2>
-            <p>Reports Resolved</p>
-        </div>
-    </div>
 
-    <div class="stat-card">
-        <div class="stat-icon">🗑️</div>
-        <div>
-            <h2>35+</h2>
-            <p>Smart Bins</p>
-        </div>
-    </div>
+        <div class="impact-grid">
 
-    <div class="stat-card">
-        <div class="stat-icon">🌱</div>
-        <div>
-            <h2>120+</h2>
-            <p>Eco Activities</p>
+            <div class="impact-card">
+
+                <div class="impact-icon">
+                    <i class="fa-solid fa-recycle"></i>
+                </div>
+
+                <strong>1,248+</strong>
+
+                <span>Kg Waste Recycled</span>
+
+                <small>
+                    <i class="fa-solid fa-arrow-up"></i>
+                    18.4% this month
+                </small>
+
+            </div>
+
+
+            <div class="impact-card">
+
+                <div class="impact-icon">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+                <strong>520+</strong>
+
+                <span>Active Students</span>
+
+                <small>
+                    <i class="fa-solid fa-arrow-up"></i>
+                    12.8% this month
+                </small>
+
+            </div>
+
+
+            <div class="impact-card">
+
+                <div class="impact-icon">
+                    <i class="fa-solid fa-trash-can"></i>
+                </div>
+
+                <strong>186</strong>
+
+                <span>Waste Reports</span>
+
+                <small>
+                    <i class="fa-solid fa-check"></i>
+                    92% resolved
+                </small>
+
+            </div>
+
+
+            <div class="impact-card">
+
+                <div class="impact-icon">
+                    <i class="fa-solid fa-tree"></i>
+                </div>
+
+                <strong>84%</strong>
+
+                <span>Green Campus Score</span>
+
+                <small>
+                    <i class="fa-solid fa-arrow-up"></i>
+                    Improving
+                </small>
+
+            </div>
+
         </div>
+
     </div>
 
 </section>
@@ -159,100 +367,108 @@
 
 <section class="section" id="waste">
 
-    <div class="section-heading">
+    <div class="container">
 
-        <span class="section-label">WASTE GUIDE</span>
+        <div class="section-heading">
 
-        <h2>
-            Know Your Waste.
-            <span>Make a Difference.</span>
-        </h2>
+            <span class="section-label">WASTE GUIDE</span>
 
-        <p>
-            Learn how to identify and dispose of different
-            types of waste correctly.
-        </p>
-
-    </div>
-
-
-    <div class="waste-grid">
-
-        <div class="waste-card wet">
-
-            <div class="waste-icon">🥬</div>
-
-            <span class="waste-tag">ORGANIC</span>
-
-            <h3>Wet Waste</h3>
+            <h2>
+                Know your waste.
+                <span>Sort it right.</span>
+            </h2>
 
             <p>
-                Food leftovers, fruit peels and other
-                biodegradable materials.
+                Not sure which bin to use? Select a category
+                to understand how to dispose of waste correctly.
             </p>
-
-            <button onclick="showWasteInfo('Wet Waste')">
-                Learn More →
-            </button>
 
         </div>
 
 
-        <div class="waste-card dry">
+        <div class="waste-grid">
 
-            <div class="waste-icon">📦</div>
+            <button class="waste-card wet"
+                    onclick="showWaste('Wet Waste')">
 
-            <span class="waste-tag">RECYCLABLE</span>
+                <div class="waste-icon">
+                    <i class="fa-solid fa-apple-whole"></i>
+                </div>
 
-            <h3>Dry Waste</h3>
+                <h3>Wet Waste</h3>
 
-            <p>
-                Paper, cardboard and clean recyclable
-                packaging materials.
-            </p>
+                <p>
+                    Food scraps, fruit peels and organic waste.
+                </p>
 
-            <button onclick="showWasteInfo('Dry Waste')">
-                Learn More →
+                <span>
+                    Learn more
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
             </button>
 
-        </div>
 
+            <button class="waste-card dry"
+                    onclick="showWaste('Dry Waste')">
 
-        <div class="waste-card plastic">
+                <div class="waste-icon">
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
 
-            <div class="waste-icon">🥤</div>
+                <h3>Dry Waste</h3>
 
-            <span class="waste-tag">PLASTIC</span>
+                <p>
+                    Paper, cardboard, packaging and clean materials.
+                </p>
 
-            <h3>Plastic Waste</h3>
+                <span>
+                    Learn more
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
 
-            <p>
-                Bottles, containers and other plastic
-                packaging materials.
-            </p>
-
-            <button onclick="showWasteInfo('Plastic Waste')">
-                Learn More →
             </button>
 
-        </div>
+
+            <button class="waste-card plastic"
+                    onclick="showWaste('Plastic Waste')">
+
+                <div class="waste-icon">
+                    <i class="fa-solid fa-bottle-water"></i>
+                </div>
+
+                <h3>Plastic Waste</h3>
+
+                <p>
+                    Bottles, containers and recyclable plastic items.
+                </p>
+
+                <span>
+                    Learn more
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
+
+            </button>
 
 
-        <div class="waste-card electronic">
+            <button class="waste-card ewaste"
+                    onclick="showWaste('E-Waste')">
 
-            <div class="waste-icon">💻</div>
+                <div class="waste-icon">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
 
-            <span class="waste-tag">E-WASTE</span>
+                <h3>E-Waste</h3>
 
-            <h3>E-Waste</h3>
+                <p>
+                    Batteries, chargers, electronics and devices.
+                </p>
 
-            <p>
-                Old chargers, batteries, cables and
-                electronic components.
-            </p>
+                <span>
+                    Learn more
+                    <i class="fa-solid fa-arrow-right"></i>
+                </span>
 
-            <button onclick="showWasteInfo('E-Waste')">
-                Learn More →
             </button>
 
         </div>
@@ -264,102 +480,141 @@
 
 <!-- ================= BIN LOCATOR ================= -->
 
-<section class="locator-section" id="locator">
+<section class="section locator-section" id="bins">
 
-    <div class="section-heading">
+    <div class="container">
 
-        <span class="section-label">BIN LOCATOR</span>
+        <div class="locator-box">
 
-        <h2>
-            Find the Right
-            <span>Bin.</span>
-        </h2>
+            <div class="locator-content">
 
-        <p>
-            Locate the appropriate waste collection point
-            around your campus.
-        </p>
+                <span class="section-label">SMART BIN LOCATOR</span>
 
-    </div>
+                <h2>
+                    Find the nearest
+                    <span>smart bin.</span>
+                </h2>
+
+                <p>
+                    Locate available waste bins around your campus
+                    and dispose of waste responsibly.
+                </p>
 
 
-    <div class="locator-container">
+                <div class="location-search">
 
-        <div class="campus-map">
+                    <i class="fa-solid fa-magnifying-glass"></i>
 
-            <div class="map-title">
-                <span>📍</span>
-                Campus Waste Points
+                    <input
+                        type="text"
+                        id="binSearch"
+                        placeholder="Search campus location...">
+
+                    <button onclick="searchBin()">
+                        Search
+                    </button>
+
+                </div>
+
+
+                <div class="bin-list" id="binList">
+
+                    <div class="bin-item">
+
+                        <div class="bin-location-icon">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+
+                        <div>
+                            <strong>Main Building</strong>
+                            <small>Wet • Dry • Plastic</small>
+                        </div>
+
+                        <span class="available">
+                            Available
+                        </span>
+
+                    </div>
+
+
+                    <div class="bin-item">
+
+                        <div class="bin-location-icon">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+
+                        <div>
+                            <strong>Library</strong>
+                            <small>Dry • E-Waste</small>
+                        </div>
+
+                        <span class="available">
+                            Available
+                        </span>
+
+                    </div>
+
+
+                    <div class="bin-item">
+
+                        <div class="bin-location-icon">
+                            <i class="fa-solid fa-futbol"></i>
+                        </div>
+
+                        <div>
+                            <strong>Sports Ground</strong>
+                            <small>Wet • Dry • Plastic</small>
+                        </div>
+
+                        <span class="full">
+                            80% Full
+                        </span>
+
+                    </div>
+
+                </div>
+
             </div>
+
 
             <div class="map-area">
 
-                <div class="map-building building-a">
-                    🏫
-                    <small>Block A</small>
+                <div class="map-grid">
+
+                    <div class="map-road road-one"></div>
+                    <div class="map-road road-two"></div>
+
+                    <div class="map-building building-one">
+                        Main
+                    </div>
+
+                    <div class="map-building building-two">
+                        Library
+                    </div>
+
+                    <div class="map-building building-three">
+                        Canteen
+                    </div>
+
+                    <button class="map-pin pin-one">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </button>
+
+                    <button class="map-pin pin-two">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </button>
+
+                    <button class="map-pin pin-three">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </button>
+
                 </div>
 
-                <div class="map-building building-b">
-                    📚
-                    <small>Library</small>
+                <div class="map-label">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    Campus Map
                 </div>
 
-                <div class="map-building building-c">
-                    🍽️
-                    <small>Canteen</small>
-                </div>
-
-                <div class="map-building building-d">
-                    💻
-                    <small>Computer Lab</small>
-                </div>
-
-                <div class="bin-point point-1">♻️</div>
-                <div class="bin-point point-2">🗑️</div>
-                <div class="bin-point point-3">♻️</div>
-                <div class="bin-point point-4">🔋</div>
-
-            </div>
-
-        </div>
-
-
-        <div class="location-list">
-
-            <div class="location-card">
-                <div class="location-icon dry-icon">♻️</div>
-                <div>
-                    <h3>Library</h3>
-                    <p>Dry Waste Bin</p>
-                </div>
-                <span>→</span>
-            </div>
-
-            <div class="location-card">
-                <div class="location-icon wet-icon">🥬</div>
-                <div>
-                    <h3>Canteen</h3>
-                    <p>Wet Waste Bin</p>
-                </div>
-                <span>→</span>
-            </div>
-
-            <div class="location-card">
-                <div class="location-icon plastic-icon">🥤</div>
-                <div>
-                    <h3>Main Block</h3>
-                    <p>Plastic Waste Bin</p>
-                </div>
-                <span>→</span>
-            </div>
-
-            <div class="location-card">
-                <div class="location-icon electronic-icon">🔋</div>
-                <div>
-                    <h3>Computer Lab</h3>
-                    <p>E-Waste Collection</p>
-                </div>
-                <span>→</span>
             </div>
 
         </div>
@@ -373,120 +628,171 @@
 
 <section class="section" id="report">
 
-    <div class="report-container">
+    <div class="container">
 
-        <div class="report-info">
+        <div class="report-layout">
 
-            <span class="section-label">REPORT AN ISSUE</span>
+            <div class="report-info">
 
-            <h2>
-                See Something?
-                <span>Report It.</span>
-            </h2>
+                <span class="section-label">REPORT A PROBLEM</span>
 
-            <p>
-                Help keep our campus clean. Report overflowing
-                bins, garbage or other waste-related issues.
-            </p>
+                <h2>
+                    See waste?
+                    <span>Report it.</span>
+                </h2>
 
-            <div class="report-features">
+                <p>
+                    Help keep your campus clean by reporting
+                    overflowing bins, litter or waste-management issues.
+                </p>
 
-                <div>
-                    <span>✓</span>
-                    Quick and simple reporting
+
+                <div class="report-benefit">
+
+                    <div>
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+
+                    <div>
+                        <strong>Quick reporting</strong>
+                        <span>Submit a report in seconds.</span>
+                    </div>
+
                 </div>
 
-                <div>
-                    <span>✓</span>
-                    Help campus management
+
+                <div class="report-benefit">
+
+                    <div>
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+
+                    <div>
+                        <strong>Earn Eco Points</strong>
+                        <span>Get rewarded for responsible actions.</span>
+                    </div>
+
                 </div>
 
-                <div>
-                    <span>✓</span>
-                    Earn Eco Points
+
+                <div class="report-benefit">
+
+                    <div>
+                        <i class="fa-solid fa-earth-asia"></i>
+                    </div>
+
+                    <div>
+                        <strong>Make an impact</strong>
+                        <span>Help build a cleaner campus.</span>
+                    </div>
+
                 </div>
 
             </div>
 
-        </div>
 
+            <div class="report-card">
 
-        <div class="report-form">
+                <form id="reportForm">
 
-            <form id="wasteForm">
+                    <div class="form-header">
 
-                <div class="form-row">
+                        <div>
+                            <span>New Report</span>
+                            <h3>Tell us what happened</h3>
+                        </div>
 
-                    <div class="form-group">
-                        <label>Student Name</label>
-                        <input
-                            type="text"
-                            id="studentName"
-                            placeholder="Enter your name"
-                            required>
+                        <div class="report-number">
+                            #EC-2026
+                        </div>
+
                     </div>
 
-                    <div class="form-group">
-                        <label>Location</label>
 
-                        <select id="location" required>
+                    <div class="form-group">
+
+                        <label>
+                            Waste Type
+                        </label>
+
+                        <select id="wasteType" required>
 
                             <option value="">
-                                Select location
+                                Select waste type
                             </option>
 
-                            <option>Block A</option>
-                            <option>Block B</option>
-                            <option>Library</option>
-                            <option>Canteen</option>
-                            <option>Computer Lab</option>
+                            <option>Wet Waste</option>
+                            <option>Dry Waste</option>
+                            <option>Plastic Waste</option>
+                            <option>E-Waste</option>
+                            <option>Mixed Waste</option>
 
                         </select>
 
                     </div>
 
-                </div>
+
+                    <div class="form-group">
+
+                        <label>
+                            Location
+                        </label>
+
+                        <input
+                            type="text"
+                            id="reportLocation"
+                            placeholder="Example: Near library"
+                            required>
+
+                    </div>
 
 
-                <div class="form-group">
+                    <div class="form-group">
 
-                    <label>Waste Type</label>
+                        <label>
+                            Description
+                        </label>
 
-                    <select id="wasteType" required>
+                        <textarea
+                            id="reportDescription"
+                            rows="4"
+                            placeholder="Describe the issue..."
+                            required></textarea>
 
-                        <option value="">
-                            Select waste category
-                        </option>
-
-                        <option>Wet Waste</option>
-                        <option>Dry Waste</option>
-                        <option>Plastic Waste</option>
-                        <option>E-Waste</option>
-                        <option>Other</option>
-
-                    </select>
-
-                </div>
+                    </div>
 
 
-                <div class="form-group">
+                    <div class="upload-box">
 
-                    <label>Description</label>
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
 
-                    <textarea
-                        id="description"
-                        rows="4"
-                        placeholder="Describe the problem..."
-                        required></textarea>
+                        <strong>
+                            Upload a photo
+                        </strong>
 
-                </div>
+                        <small>
+                            JPG or PNG • Optional
+                        </small>
+
+                        <input
+                            type="file"
+                            id="reportImage"
+                            accept="image/*">
+
+                    </div>
 
 
-                <button type="submit" class="submit-btn">
-                    Submit Report →
-                </button>
+                    <button class="submit-btn" type="submit">
 
-            </form>
+                        Submit Report
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </form>
+
+            </div>
 
         </div>
 
@@ -497,60 +803,95 @@
 
 <!-- ================= ECO TIPS ================= -->
 
-<section class="section tips-section" id="tips">
+<section class="section tips-section">
 
-    <div class="section-heading">
+    <div class="container">
 
-        <span class="section-label">ECO TIPS</span>
+        <div class="section-heading center">
 
-        <h2>
-            Small Actions.
-            <span>Big Impact.</span>
-        </h2>
+            <span class="section-label">ECO TIPS</span>
 
-        <p>
-            Simple habits can make our campus and planet healthier.
-        </p>
+            <h2>
+                Simple habits.
+                <span>Real change.</span>
+            </h2>
 
-    </div>
-
-
-    <div class="tips-grid">
-
-        <div class="tip-card">
-            <span>💧</span>
-            <h3>Use Reusable Bottles</h3>
-            <p>
-                Reduce single-use plastic by carrying
-                a reusable water bottle.
-            </p>
         </div>
 
-        <div class="tip-card">
-            <span>💡</span>
-            <h3>Save Electricity</h3>
-            <p>
-                Switch off lights, fans and devices
-                when they are not needed.
-            </p>
-        </div>
 
-        <div class="tip-card">
-            <span>📄</span>
-            <h3>Reduce Paper Waste</h3>
-            <p>
-                Use digital notes whenever possible
-                and print only when necessary.
-            </p>
-        </div>
+        <div class="tips-grid">
 
-        <div class="tip-card">
-            <span>🔋</span>
-            <h3>Recycle E-Waste</h3>
-            <p>
-                Never throw batteries and electronics
-                into regular dustbins.
-            </p>
+            <div class="tip-card">
+
+                <span class="tip-number">01</span>
+
+                <div class="tip-icon">
+                    <i class="fa-solid fa-bottle-water"></i>
+                </div>
+
+                <h3>Carry a Reusable Bottle</h3>
+
+                <p>
+                    Reduce single-use plastic by carrying
+                    your own reusable water bottle.
+                </p>
+
+            </div>
+
+
+            <div class="tip-card">
+
+                <span class="tip-number">02</span>
+
+                <div class="tip-icon">
+                    <i class="fa-solid fa-lightbulb"></i>
+                </div>
+
+                <h3>Save Electricity</h3>
+
+                <p>
+                    Turn off lights, fans and devices
+                    when they are not needed.
+                </p>
+
+            </div>
+
+
+            <div class="tip-card">
+
+                <span class="tip-number">03</span>
+
+                <div class="tip-icon">
+                    <i class="fa-solid fa-person-walking"></i>
+                </div>
+
+                <h3>Walk Short Distances</h3>
+
+                <p>
+                    Choose walking for short campus trips
+                    and reduce unnecessary emissions.
+                </p>
+
+            </div>
+
+
+            <div class="tip-card">
+
+                <span class="tip-number">04</span>
+
+                <div class="tip-icon">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+
+                <h3>Plant More Greenery</h3>
+
+                <p>
+                    Support campus greenery and
+                    create a healthier environment.
+                </p>
+
+            </div>
+
         </div>
 
     </div>
@@ -560,52 +901,69 @@
 
 <!-- ================= ECO POINTS ================= -->
 
-<section class="points-section" id="points">
+<section class="points-section">
 
-    <div class="points-container">
+    <div class="container">
 
-        <div class="points-content">
+        <div class="points-box">
 
-            <span class="section-label">ECO REWARDS</span>
+            <div class="points-left">
 
-            <h2>
-                Your Actions
-                <span>Matter.</span>
-            </h2>
+                <span class="section-label">
+                    ECO POINTS
+                </span>
 
-            <p>
-                Participate in green activities, earn Eco Points
-                and become an EcoCampus Green Hero.
-            </p>
+                <h2>
+                    Your actions
+                    <span>have value.</span>
+                </h2>
 
-            <button class="primary-btn"
-                    onclick="addDemoPoints()">
-                Earn 10 Points
-            </button>
-
-        </div>
+                <p>
+                    Earn points by reporting waste,
+                    following eco tips and participating
+                    in green campus activities.
+                </p>
 
 
-        <div class="points-card">
+                <div class="level">
 
-            <div class="points-top">
-                <span>🌱</span>
-                <small>MY ECO IMPACT</small>
+                    <div class="level-info">
+
+                        <span>Level 4 • Green Champion</span>
+
+                        <strong id="pointsText">
+                            720 / 1000 XP
+                        </strong>
+
+                    </div>
+
+                    <div class="progress">
+                        <div id="pointsProgress"></div>
+                    </div>
+
+                    <small>
+                        280 XP more to reach Level 5
+                    </small>
+
+                </div>
+
             </div>
 
-            <h3 id="pointsValue">125</h3>
 
-            <p>Eco Points</p>
+            <div class="points-circle">
 
-            <div class="progress">
+                <div>
 
-                <div class="progress-bar" id="progressBar"></div>
+                    <i class="fa-solid fa-leaf"></i>
 
-            </div>
+                    <strong id="ecoPoints">
+                        720
+                    </strong>
 
-            <div class="level">
-                <span>Current Level</span>
-                <strong id="levelText">Green Hero</strong>
+                    <span>Eco Points</span>
+
+                </div>
+
             </div>
 
         </div>
@@ -619,63 +977,156 @@
 
 <section class="section" id="leaderboard">
 
-    <div class="section-heading">
+    <div class="container">
 
-        <span class="section-label">LEADERBOARD</span>
+        <div class="section-heading">
 
-        <h2>
-            Meet Our
-            <span>Eco Champions.</span>
-        </h2>
+            <span class="section-label">
+                LEADERBOARD
+            </span>
 
-        <p>
-            Friendly competition that encourages
-            positive environmental actions.
-        </p>
+            <h2>
+                Green campus
+                <span>champions.</span>
+            </h2>
+
+            <p>
+                Students making the biggest contribution
+                to a cleaner campus.
+            </p>
+
+        </div>
+
+
+        <div class="leaderboard">
+
+            <div class="leader-row top">
+
+                <div class="rank">
+                    01
+                </div>
+
+                <div class="leader-avatar">
+                    A
+                </div>
+
+                <div class="leader-name">
+                    <strong>Aarav Patel</strong>
+                    <small>Green Champion</small>
+                </div>
+
+                <div class="leader-points">
+                    1,420 XP
+                </div>
+
+            </div>
+
+
+            <div class="leader-row">
+
+                <div class="rank">
+                    02
+                </div>
+
+                <div class="leader-avatar">
+                    R
+                </div>
+
+                <div class="leader-name">
+                    <strong>Riya Shah</strong>
+                    <small>Eco Warrior</small>
+                </div>
+
+                <div class="leader-points">
+                    1,280 XP
+                </div>
+
+            </div>
+
+
+            <div class="leader-row">
+
+                <div class="rank">
+                    03
+                </div>
+
+                <div class="leader-avatar">
+                    K
+                </div>
+
+                <div class="leader-name">
+                    <strong>Karan Mehta</strong>
+                    <small>Eco Warrior</small>
+                </div>
+
+                <div class="leader-points">
+                    1,150 XP
+                </div>
+
+            </div>
+
+
+            <div class="leader-row current-user">
+
+                <div class="rank">
+                    04
+                </div>
+
+                <div class="leader-avatar">
+                    Y
+                </div>
+
+                <div class="leader-name">
+                    <strong>You</strong>
+                    <small>Green Explorer</small>
+                </div>
+
+                <div class="leader-points">
+                    720 XP
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
+</section>
 
-    <div class="leaderboard">
 
-        <div class="leader-row top">
-            <div class="rank">🥇</div>
-            <div class="avatar">A</div>
-            <div class="student">
-                <strong>Aarav</strong>
-                <small>Eco Champion</small>
+<!-- ================= CTA ================= -->
+
+<section class="cta-section">
+
+    <div class="container">
+
+        <div class="cta-box">
+
+            <div class="cta-decoration"></div>
+
+            <div>
+
+                <span class="section-label">
+                    JOIN THE MOVEMENT
+                </span>
+
+                <h2>
+                    One campus.
+                    <span>One greener future.</span>
+                </h2>
+
+                <p>
+                    Every small action counts.
+                    Start making an impact today.
+                </p>
+
             </div>
-            <strong>250 pts</strong>
-        </div>
 
-        <div class="leader-row">
-            <div class="rank">🥈</div>
-            <div class="avatar">R</div>
-            <div class="student">
-                <strong>Rahul</strong>
-                <small>Green Warrior</small>
-            </div>
-            <strong>220 pts</strong>
-        </div>
+            <a href="#report" class="btn btn-white">
+                Start Contributing
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
 
-        <div class="leader-row">
-            <div class="rank">🥉</div>
-            <div class="avatar">P</div>
-            <div class="student">
-                <strong>Priya</strong>
-                <small>Eco Hero</small>
-            </div>
-            <strong>195 pts</strong>
-        </div>
-
-        <div class="leader-row">
-            <div class="rank">4</div>
-            <div class="avatar">D</div>
-            <div class="student">
-                <strong>Dhara</strong>
-                <small>Green Starter</small>
-            </div>
-            <strong id="dharaPoints">180 pts</strong>
         </div>
 
     </div>
@@ -687,60 +1138,162 @@
 
 <footer>
 
-    <div class="footer-main">
+    <div class="container">
 
-        <div class="footer-brand">
+        <div class="footer-main">
 
-            <div class="logo">
-                <span class="logo-icon">🌿</span>
-                <span>Eco<span>Campus</span></span>
+            <div class="footer-brand">
+
+                <a href="#home" class="logo">
+
+                    <span class="logo-icon">
+                        <i class="fa-solid fa-leaf"></i>
+                    </span>
+
+                    <span>
+                        Eco<span>Campus</span>
+                    </span>
+
+                </a>
+
+                <p>
+                    Building smarter, cleaner and
+                    more sustainable campuses.
+                </p>
+
+                <div class="socials">
+
+                    <a href="#">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+
+                </div>
+
             </div>
 
-            <p>
-                Building cleaner campuses through
-                technology, awareness and action.
-            </p>
+
+            <div class="footer-column">
+
+                <h4>Platform</h4>
+
+                <a href="#impact">Impact</a>
+                <a href="#waste">Waste Guide</a>
+                <a href="#bins">Bin Locator</a>
+                <a href="#report">Report Waste</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>Community</h4>
+
+                <a href="#leaderboard">Leaderboard</a>
+                <a href="#">Eco Tips</a>
+                <a href="#">Challenges</a>
+                <a href="#">Rewards</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>Project</h4>
+
+                <a href="#">About EcoCampus</a>
+                <a href="#">Design Thinking</a>
+                <a href="#">Innovation</a>
+                <a href="#">Contact</a>
+
+            </div>
 
         </div>
 
 
-        <div class="footer-links">
+        <div class="footer-bottom">
 
-            <h4>Platform</h4>
+            <span>
+                © 2026 EcoCampus. All rights reserved.
+            </span>
 
-            <a href="#waste">Waste Guide</a>
-            <a href="#locator">Bin Locator</a>
-            <a href="#report">Report Waste</a>
-            <a href="#points">Eco Points</a>
-
-        </div>
-
-
-        <div class="footer-links">
-
-            <h4>Resources</h4>
-
-            <a href="#tips">Eco Tips</a>
-            <a href="#leaderboard">Leaderboard</a>
-            <a href="#home">About EcoCampus</a>
+            <span>
+                Design Thinking & Innovation Project
+            </span>
 
         </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <p>© 2026 EcoCampus. Designed for a greener future.</p>
-
-        <span>🌱 Think Green • Act Green</span>
 
     </div>
 
 </footer>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- ================= TOAST ================= -->
+
+<div class="toast" id="toast">
+
+    <div class="toast-icon">
+        <i class="fa-solid fa-check"></i>
+    </div>
+
+    <div>
+        <strong id="toastTitle">
+            Success
+        </strong>
+
+        <span id="toastMessage">
+            Action completed successfully.
+        </span>
+    </div>
+
+</div>
+
+
+<!-- ================= MODAL ================= -->
+
+<div class="modal" id="wasteModal">
+
+    <div class="modal-box">
+
+        <button class="modal-close"
+                onclick="closeWaste()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="modal-icon">
+            <i class="fa-solid fa-recycle"></i>
+        </div>
+
+        <span class="section-label">
+            WASTE INFORMATION
+        </span>
+
+        <h2 id="modalTitle">
+            Waste Type
+        </h2>
+
+        <p id="modalText">
+            Information about waste.
+        </p>
+
+        <div class="modal-tip">
+            <i class="fa-solid fa-lightbulb"></i>
+            <span>
+                Always segregate waste before disposal.
+            </span>
+        </div>
+
+    </div>
+
+</div>
+
 
 <script src="script.js"></script>
 
